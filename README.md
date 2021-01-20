@@ -1,27 +1,46 @@
-# MovieApp
+# Movie App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
+## Project Description
 
-## Development server
+Here goes your awesome project description!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Technologies Used
 
-## Code scaffolding
+* Tech 1 - version 1.0
+* Tech 2 - version 2.0
+* Tech 3 - version 3.0
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Features
 
-## Build
+List of features ready and TODOs for future development
+* Awesome feature 1
+* Awesome feature 2
+* Awesome feature 3
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+To-do list:
+* Wow improvement to be done 1
+* Wow improvement to be done 2
 
-## Running unit tests
+## Getting Started
+   
+(include git clone command)
+(include all environment setup steps)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+> Be sure to include BOTH Windows and Unix command  
+> Be sure to mention if the commands only work on a specific platform (eg. AWS, GCP)
 
-## Running end-to-end tests
+- All the `code` required to get started
+- Images of what it should look like
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Usage
 
-## Further help
+> Here, you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Contributors
+
+> Here list the people who have contributed to this project. (ignore this section, if its a solo project)
+
+## License
+
+This project uses the following license: [<license_name>](<link>).
+
