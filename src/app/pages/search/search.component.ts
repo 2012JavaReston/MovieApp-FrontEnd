@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Movie } from '../../interfaces/Movie';
+import { TmdbService } from '../../services/tmdb.service';
 
 @Component({
   selector: 'app-search',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
-  constructor() { }
+  searchMovie: string = "";
+  movies: Movie[] = [];
+  constructor(private tmdbService: TmdbService) { }
 
   ngOnInit(): void {
+  }
+
+  clickSearchMovie(): void {
+    this.movies = this.tmdbService.getMovies(this.searchMovie)
   }
 
 }
