@@ -6,6 +6,7 @@
     --primaryColor: #C39F29;
     /* --secondaryColor: */
     /* --thirdColor: */
+    --pageMargin: 10px;
 }
 
 body {
