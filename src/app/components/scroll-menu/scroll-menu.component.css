@@ -1,0 +1,9 @@
+.movieScroll {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+    padding: 0 10px;
+}
+.movieScroll img{
+    margin: 10px;
+}

@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { SearchComponent } from './pages/search/search.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ScrollMenuComponent } from './components/scroll-menu/scroll-menu.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     SearchComponent,
+    ScrollMenuComponent
   ],
   imports: [
     BrowserModule,
