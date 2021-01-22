@@ -4,8 +4,8 @@
     <div class="heading-container">
         <img class="heading-background-image" src="../../../assets/Theater.png" />
         <div class="search-container">
-            <input class="search-input" type="text" placeholder="Search for a movie..."/>
-            <button class="search-button">Search</button>
+            <input [(ngModel)]='search' class="search-input" type="text" placeholder="Search for a movie..."/>
+            <button (click)='clickSearch()' class="search-button">Search</button>
         </div>
     </div>
     <div class="movies-container">
