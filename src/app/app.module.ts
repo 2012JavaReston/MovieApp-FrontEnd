@@ -7,7 +7,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
-
+import { ScrollMenuComponent } from './components/scroll-menu/scroll-menu.component';
 
 @NgModule({
   declarations: [
@@ -15,8 +15,8 @@ import { RegisterComponent } from './pages/register/register.component';
     HomeComponent,
     LandingComponent,
     LoginComponent,
-    RegisterComponent
-   
+    RegisterComponent,
+    ScrollMenuComponent
   ],
   imports: [
     BrowserModule,
