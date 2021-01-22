@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LandingComponent } from './pages/landing/landing.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: "", component: LandingComponent},
+  {path: "login", component: LoginPageComponent},
+  {path: "register", component: RegisterPageComponent}
+ 
+  
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
