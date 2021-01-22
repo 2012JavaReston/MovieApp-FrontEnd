@@ -13,12 +13,12 @@ export class TmdbService {
     private http: HttpClient,
     ) { }
 
-  public getMovies(url: string): Movies[]{
-
+  public getMovies(url: string): Movie[]{
+    let movies: Movie[] = [];
     this.http.get<string>(this.baseUrl + url).subscribe(
-      (data) => {
-        let jsonMovies: object[] = data["results"];
-        jsonMovies.forEach(jsonMovie => {
+      (data: any) => {
+        let jsonMovies: any = data["results"];
+        jsonMovies.forEach((jsonMovie: any) => {
           let movie: Movie = {
             title: '',
             description: '',
@@ -30,11 +30,11 @@ export class TmdbService {
             movie.description = `${jsonMovie["overview"]}`;
             movie.image = `https://image.tmdb.org/t/p/original${jsonMovie["poster_path"]}`;
             movie.releaseDate = `${jsonMovie["release_date"]}`;
-            this.movies.push(movie);
+            movies.push(movie);
           }
         });
       }
     );
-    return Movies[];
+    return movies;
   }
 }
