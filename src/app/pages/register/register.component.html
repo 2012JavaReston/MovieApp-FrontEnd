@@ -1,0 +1,38 @@
+<div class="register">
+    <div class="container">
+        <div>
+            <div>
+                <div>
+                    <form id="login-form" (ngSubmit)="onSubmit()" class="form">
+                        <h3>New User</h3>
+                        <div >
+                            <label for="username">Username:</label><br>
+                            <input  type="text" [(ngModel)]="username" name = "username" id="username">
+                        </div>
+                        <div>
+                            <label for="password">Password:</label><br>
+                            <input type="password" [(ngModel)]="password" name="password" id="password" >
+                        </div>
+                        <div>
+                            <label for="fName">First Name:</label><br>
+                            <input type="text" [(ngModel)]="fName" name="fName" id="fName" >
+                        </div>
+                        <div>
+                            <label for="lName">Last Name:</label><br>
+                            <input type="text" [(ngModel)]="lName" name="lName" id="lName" >
+                        </div>
+                        <div>
+                            <label for="email">Email:</label><br>
+                            <input type="email" [(ngModel)]="email" name="email" id="email" >
+                        </div>
+                        <div>
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button routerLink='/login'> Back to Login</button>
