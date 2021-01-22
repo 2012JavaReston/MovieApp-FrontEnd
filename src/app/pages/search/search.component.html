@@ -1,1 +1,14 @@
-<p>search works!</p>
+<!-- I Will change the UI. This is just to test that everything works -->
+<div class="page-content">
+    <h1>Search for a Movie</h1>
+    <input type="text" [(ngModel)]="searchMovie"/>
+    <button (click)="clickSearchMovie()">Search</button>
+    <div class="movie-card-container">
+        <div *ngFor="let movie of movies" class="movie-card">
+            <p>{{movie.title}}</p>
+            <p>{{movie.description}}</p>
+            <p>{{movie.releaseDate}}</p>
+            <img [src]="movie.image"/>
+        </div>
+    </div>
+</div>
