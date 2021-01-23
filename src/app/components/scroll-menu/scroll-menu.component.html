@@ -1,6 +1,6 @@
 <div class="scroll-container">
     <p>{{listName}}</p>
     <div class="movieScroll">
-        <img *ngFor="let image of movieArray" class="img-fluid" src="http://placehold.it/200?text={{image}}">
+        <app-movie-item *ngFor="let image of movieArray" [imageUrl]="image" [movieName]="image"></app-movie-item>
     </div>
 </div>
