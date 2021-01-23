@@ -1,0 +1,74 @@
+@keyframes shadows {
+  0% {
+    text-shadow: 1px 1px 1px var(--primaryWhiteColor);
+  }
+
+  25% {
+    text-shadow: 2px 2px 2px var(--primaryWhiteColor);
+  }
+
+  50% {
+    text-shadow: 3px 3px 4px var(--primaryWhiteColor);
+  }
+
+  75% {
+    text-shadow: 4px 4px 5px var(--primaryWhiteColor);
+  }
+
+  100% {
+    text-shadow: 5px 5px 6px var(--primaryWhiteColor);
+  }
+}
+
+
+#backToLoginButton {
+  margin-top: 10px;
+}
+
+#registerBack {
+  height: 100vh;
+  background-color: var(--secondaryRedColor);
+}
+
+#actualText {
+  text-shadow: 1px 1px 1px var(--primaryWhiteColor);
+  animation-name: shadows;
+  animation-duration: 4s;
+  animation-iteration-count: 5;
+}
+
+#formBack {
+  margin-top: 35px;
+  background-color: var(--theBlackColor);
+  padding-top: 50px;
+  padding-bottom: 25px;
+  border-radius: 12px;
+
+}
+
+#registerText {
+  margin-bottom: 50px;
+}
+
+#submitButton {
+  background-color: var(--primaryGoldColor);
+  border-radius: 12px;
+  width: 50%;
+}
+
+form {
+  border: 2px solid black;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, .3);
+  color: black;
+}
+
+.container {
+  font-family: var(--secondaryFont);
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: center;
+
+}
