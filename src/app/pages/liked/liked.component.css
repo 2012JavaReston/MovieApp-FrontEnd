@@ -38,18 +38,51 @@
     }
   } */
 
-  .card {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
+  
+
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.card-body{
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+.img-square-wrapper{
+    max-width: 100%;
+    height: auto;
+}
+
+.card-custom-horizontal {
+    background-color: #efefef;
+    display: flex;
+    margin-bottom: 1em;
   }
   
-  /* On mouse-over, add a deeper shadow */
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  .card-custom-img {
+    background-color: #242424;
   }
   
-  /* Add some padding inside the card container */
-  .container {
-    padding: 2px 16px;
+  .card-custom-img .cover {
+    width: 100%;
+    min-width: 200px;
+    object-fit: cover;
+  }
+  
+  .card-custom-body {
+    background-color: #efefef;
+    padding: 1em;
+  }
+  
+  @media only screen and (max-width: 575.98px) {
+      .card-custom-horizontal {
+          flex-direction: column;
+      }
+  }
+
+  .card-custom-img{
+      width: 20%; 
+      /* height: 0%; */
   }

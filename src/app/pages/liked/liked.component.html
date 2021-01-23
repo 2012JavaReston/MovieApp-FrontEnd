@@ -1,24 +1,19 @@
-<!-- <div>
-
-</div>
 <h1>Liked Movies</h1>
 
 <div class="container">
-    <div class="picture">picture</div>
-    <div class="text">Name of movie</div>
-</div>
+  <div class="row">
+    <div class="col-md-12 py-5" *ngFor="let movie of movies">
 
-
-<div class="container">
-    <div class="picture">picture</div>
-    <div class="text">Name of move</div>
-</div> -->
-
-
-<div class="card">
-    <img src="https://cdn.shopify.com/s/files/1/1416/8662/products/titanic_1997_styleA_original_film_art_d26e81c0-1b87-4076-9da4-9fcdc0389ea5_5000x.jpg?v=1607475298" alt="Avatar" style="width:100%">
-    <div class="container">
-      <h4><b>John Doe</b></h4>
-      <p>Architect & Engineer</p>
+      <div class="card-custom-horizontal">
+        <div class="card-custom-img"><img class="cover" [src]="movie.img" alt="Image of movie poster"></div>
+        <div class="card-custom-body">
+          <p>{{movie.details}}</p>
+          <p>Has ut autem mucius, nec in vero epicurei. Mei no possim commodo instructior. Ne zril comprehensam vix, mutat oratio et sea. Cetero alienum recusabo ex cum, autem ludus interpretaris eam te.</p>
+        </div>
+      </div>
+      
+      
+      
     </div>
   </div>
+</div>

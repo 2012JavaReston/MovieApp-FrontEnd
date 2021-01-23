@@ -12,12 +12,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent}, 
   { path: 'register', component: RegisterComponent},
   { path: 'home', component: HomeComponent },
-<<<<<<< HEAD
-  { path: 'liked', component: LikedComponent }
-  
-=======
   { path: 'search', component: SearchComponent },
->>>>>>> 944e3cc2993c0cb4969202166f33d89b2366d718
+  { path: 'liked', component: LikedComponent },
 
 ];
 

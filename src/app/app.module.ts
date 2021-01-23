@@ -19,13 +19,9 @@ import { LikedComponent } from './pages/liked/liked.component';
     LandingComponent,
     LoginComponent,
     RegisterComponent,
-<<<<<<< HEAD
-    ScrollMenuComponent,
-    LikedComponent
-=======
     SearchComponent,
-    ScrollMenuComponent
->>>>>>> 944e3cc2993c0cb4969202166f33d89b2366d718
+    ScrollMenuComponent, 
+    LikedComponent,
   ],
   imports: [
     BrowserModule,
