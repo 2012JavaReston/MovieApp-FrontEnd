@@ -7,6 +7,8 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
+import { SearchComponent } from './pages/search/search.component';
+import { HttpClientModule } from '@angular/common/http';
 import { ScrollMenuComponent } from './components/scroll-menu/scroll-menu.component';
 import { LikedComponent } from './pages/liked/liked.component';
 
@@ -17,13 +19,19 @@ import { LikedComponent } from './pages/liked/liked.component';
     LandingComponent,
     LoginComponent,
     RegisterComponent,
+<<<<<<< HEAD
     ScrollMenuComponent,
     LikedComponent
+=======
+    SearchComponent,
+    ScrollMenuComponent
+>>>>>>> 944e3cc2993c0cb4969202166f33d89b2366d718
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

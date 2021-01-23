@@ -5,14 +5,19 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { LikedComponent } from './pages/liked/liked.component';
 import { LoginComponent} from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { SearchComponent } from './pages/search/search.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},
   { path: 'login', component: LoginComponent}, 
   { path: 'register', component: RegisterComponent},
   { path: 'home', component: HomeComponent },
+<<<<<<< HEAD
   { path: 'liked', component: LikedComponent }
   
+=======
+  { path: 'search', component: SearchComponent },
+>>>>>>> 944e3cc2993c0cb4969202166f33d89b2366d718
 
 ];
 
