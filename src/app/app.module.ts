@@ -7,6 +7,8 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
+import { SearchComponent } from './pages/search/search.component';
+import { HttpClientModule } from '@angular/common/http';
 import { ScrollMenuComponent } from './components/scroll-menu/scroll-menu.component';
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
 
@@ -17,13 +19,15 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
     LandingComponent,
     LoginComponent,
     RegisterComponent,
+    SearchComponent,
     ScrollMenuComponent,
     MovieItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

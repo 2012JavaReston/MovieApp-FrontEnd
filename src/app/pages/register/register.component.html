@@ -1,38 +1,38 @@
-<div class="register">
-    <div class="container">
-        <div>
-            <div>
-                <div>
-                    <form id="login-form" (ngSubmit)="onSubmit()" class="form">
-                        <h3>New User</h3>
-                        <div >
-                            <label for="username">Username:</label><br>
-                            <input  type="text" [(ngModel)]="username" name = "username" id="username">
-                        </div>
-                        <div>
-                            <label for="password">Password:</label><br>
-                            <input type="password" [(ngModel)]="password" name="password" id="password" >
-                        </div>
-                        <div>
-                            <label for="fName">First Name:</label><br>
-                            <input type="text" [(ngModel)]="fName" name="fName" id="fName" >
-                        </div>
-                        <div>
-                            <label for="lName">Last Name:</label><br>
-                            <input type="text" [(ngModel)]="lName" name="lName" id="lName" >
-                        </div>
-                        <div>
-                            <label for="email">Email:</label><br>
-                            <input type="email" [(ngModel)]="email" name="email" id="email" >
-                        </div>
-                        <div>
-                            <button type="submit">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<div class="container-fluid register" id="registerBack">
+  <div class="container text-center" id="formBack">
+    <div class="container" id="registerText">
+      <h1 class="display-1" id="actualText">R E G I S T E R</h1>
     </div>
-</div>
 
-<button routerLink='/login'> Back to Login</button>
+    <form id="login-form" (ngSubmit)="onSubmit()" class="form justify-content-center">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="fName">F i r s t  N a m e</label><br>
+          <input type="text" class="form-control" [(ngModel)]="fName" name="fName" id="fName">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lName">L a s t  N a m e</label><br>
+          <input type="text" class="form-control" [(ngModel)]="lName" name="lName" id="lName">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="username">U s e r n a m e</label><br>
+        <input type="text" class="form-control" [(ngModel)]="username" name="username" id="username">
+      </div>
+      <div class="form-group">
+        <label for="password">P a s s w o r d</label><br>
+        <input type="password" class="form-control" [(ngModel)]="password" name="password" id="password">
+      </div>
+      <div class="form-group">
+        <label for="email"> E - m a i l</label><br>
+        <input type="email" class="form-control" [(ngModel)]="email" name="email" id="email">
+      </div>
+      <div class="text-center">
+        <button type="submit" id="submitButton" class="btn btn-lg">Submit</button>
+      </div>
+    </form>
+    <button type="button" id="backToLoginButton" class="btn btn-lg btn-block btn-outline-secondary" routerLink='/login'>
+      Back to
+      Login</button>
+  </div>
+</div>
