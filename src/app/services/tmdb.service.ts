@@ -26,10 +26,10 @@ export class TmdbService {
             releaseDate: ''
           }
           if(jsonMovie["poster_path"] != null){
-            movie.title = `${jsonMovie["title"]}`;
-            movie.description = `${jsonMovie["overview"]}`;
+            movie.title = jsonMovie["title"];
+            movie.description = jsonMovie["overview"];
             movie.image = `https://image.tmdb.org/t/p/original${jsonMovie["poster_path"]}`;
-            movie.releaseDate = `${jsonMovie["release_date"]}`;
+            movie.releaseDate = jsonMovie["release_date"];
             movies.push(movie);
           }
         });
