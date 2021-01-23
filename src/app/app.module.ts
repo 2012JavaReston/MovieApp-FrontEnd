@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { ScrollMenuComponent } from './components/scroll-menu/scroll-menu.component';
+import { LikedComponent } from './pages/liked/liked.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ScrollMenuComponent } from './components/scroll-menu/scroll-menu.compon
     LandingComponent,
     LoginComponent,
     RegisterComponent,
-    ScrollMenuComponent
+    ScrollMenuComponent,
+    LikedComponent
   ],
   imports: [
     BrowserModule,
