@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Movie } from 'src/app/interfaces/Movie';
+import { TmdbCollections } from 'src/app/interfaces/TmdbCollections';
+import { TmdbService } from 'src/app/services/tmdb.service';
 
 interface MovieItem{
   id: number;
@@ -17,14 +20,21 @@ export class ScrollMenuComponent implements OnInit {
   listName : string = "";
   
   @Input()
-  movieArray: any[] = [];
+  movieArray: Movie[] = [];
 
-  constructor() { }
+  @Input()
+  collectionType: string | undefined;
 
+  constructor(private movieService: TmdbService) { }
+
+  /**
+   * You will need to supply a collection type if you want to utilize TMDB's built in lists
+   * Otherwise you will need to supply your own custom Movie array via the movieArray property
+   */
   ngOnInit(): void {
-    //Placeholder stuff
-    this.listName = "Placeholder List";
-    this.movieArray = ["test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10", "test11", "test12"]
+    if(this.collectionType !== undefined){
+      this.movieArray = this.movieService.getMovieCollection(this.collectionType);
+    }
   }
 
 }
