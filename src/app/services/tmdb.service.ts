@@ -18,26 +18,7 @@ export class TmdbService {
     let movies: Movie[] = [];
     this.http.get<string>(this.baseUrl + url).subscribe(
       (data: any) => {
-<<<<<<< HEAD
-        let jsonMovies: any = data["results"];
-        jsonMovies.forEach((jsonMovie: any) => {
-          let movie: Movie = {
-            title: '',
-            description: '',
-            image: '',
-            releaseDate: ''
-          }
-          if(jsonMovie["poster_path"] != null){
-            movie.title = jsonMovie["title"];
-            movie.description = jsonMovie["overview"];
-            movie.image = `https://image.tmdb.org/t/p/original${jsonMovie["poster_path"]}`;
-            movie.releaseDate = jsonMovie["release_date"];
-            movies.push(movie);
-          }
-        });
-=======
         this.dataToMovieArray(data, movies);
->>>>>>> main
       }
     );
     return movies;
