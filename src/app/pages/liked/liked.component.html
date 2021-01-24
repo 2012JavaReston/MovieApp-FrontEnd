@@ -1,0 +1,41 @@
+<header>
+  <h1>Liked Movies</h1>
+</header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 py-5" *ngFor="let movie of movies">
+
+      <div class="card-custom-horizontal">
+        <!-- <div class="row"> -->
+          <!-- <div class="col-6">
+            <p>Title:</p>
+            <p>Director:</p>
+            <p>Release Date: </p>
+          </div>
+        </div> -->
+        <div class="card-custom-img"><img class="cover" [src]="movie.img" alt="Image of movie poster"></div>
+        <div class="card-custom-body justify-content-center">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-4 ">
+                <p>Title: {{movie.details}}</p>
+                <p>Director:</p>
+                <p>Release Date: </p>
+              </div>
+              <div class="col-md-6 ">
+                Summary: {{movie.summary}}
+              </div>
+            </div>
+          </div>
+                     
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
