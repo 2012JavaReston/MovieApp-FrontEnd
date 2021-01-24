@@ -7,14 +7,22 @@
 /* 
     SEARCH 
 */
+.search-container {
+    position: relative;
+}
 .search-container, .search-input {
     width: 100%;
+}
+#search-icon {
+    position: absolute;
+    top: 5px;
+    left: 5px;
 }
 .search-input {
     font-family: var(--secondaryFont);
     outline: none;
     font-size: 14px;
-    padding: 5px;
+    padding: 5px 5px 5px 35px;
     margin-bottom: 20px;
 }
 /* 

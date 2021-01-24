@@ -1,7 +1,8 @@
 <!-- Insert nav bar component once made -->
 <nav style="box-sizing:border-box;width:100%;height:80px;background-color:#C39F29;"></nav> <!-- Placeholder-->
 <div class="component">
-    <form (ngSubmit)="clickSearch()" #searchForm="ngForm" class="search-container">
+    <form (ngSubmit)="getMovies()" #searchForm="ngForm" class="search-container">
+        <span class="material-icons" id="search-icon">search</span>
         <input [(ngModel)]='searchMovie' name='searchMovie' class="search-input" type="text" placeholder="Search for a movie..."/>
     </form>
     <div *ngIf="movies.length === 0" class="no-movies">There are no movies that matched your search.</div>
