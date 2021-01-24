@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   }
 
   clickSearch(): void {
+    console.log('hit')
     this.router.navigate(['/search', this.search]);
   }
 
