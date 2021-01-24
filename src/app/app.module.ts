@@ -10,6 +10,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { SearchComponent } from './pages/search/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ScrollMenuComponent } from './components/scroll-menu/scroll-menu.component';
+import { MovieItemComponent } from './components/movie-item/movie-item.component';
 import { LikedComponent } from './pages/liked/liked.component';
 
 @NgModule({
@@ -20,8 +21,9 @@ import { LikedComponent } from './pages/liked/liked.component';
     LoginComponent,
     RegisterComponent,
     SearchComponent,
-    ScrollMenuComponent, 
-    LikedComponent,
+    ScrollMenuComponent,
+    MovieItemComponent,
+    LikedComponent
   ],
   imports: [
     BrowserModule,
