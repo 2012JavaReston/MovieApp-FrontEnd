@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../interfaces/Movie';
 import { TmdbService } from '../../services/tmdb.service';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-search',
@@ -15,7 +16,8 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private tmdbService: TmdbService
+    private tmdbService: TmdbService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -32,7 +34,8 @@ export class SearchComponent implements OnInit {
   }
 
   getMovies(): void {
-    this.movies = this.tmdbService.getMovies(this.searchMovie)
+    this.location.go(`search/${this.searchMovie}`);
+    this.movies = this.tmdbService.getMovies(this.searchMovie);
   }
 
 }
