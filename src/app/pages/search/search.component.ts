@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../interfaces/Movie';
 import { TmdbService } from '../../services/tmdb.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -10,12 +11,27 @@ import { TmdbService } from '../../services/tmdb.service';
 export class SearchComponent implements OnInit {
   searchMovie: string = "";
   movies: Movie[] = [];
-  constructor(private tmdbService: TmdbService) { }
+  private sub: any;
 
-  ngOnInit(): void {
+  constructor(
+    private route: ActivatedRoute,
+    private tmdbService: TmdbService
+  ) { }
+
+  ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.searchMovie = params['movie'];
+      if(this.searchMovie){
+        this.getMovies();
+      }
+    });
   }
 
-  clickSearchMovie(): void {
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  getMovies(): void {
     this.movies = this.tmdbService.getMovies(this.searchMovie)
   }
 

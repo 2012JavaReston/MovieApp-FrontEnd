@@ -3,8 +3,8 @@
 <div class="component">
     <div class="heading-container">
         <img class="heading-background-image" src="../../../assets/images/theater.png" />
-        <form (ngSubmit)="clickSearch()" class="search-container">
-            <input [(ngModel)]='search' class="search-input" type="text" placeholder="Search for a movie..."/>
+        <form (ngSubmit)="clickSearch()" #searchForm="ngForm" class="search-container">
+            <input [(ngModel)]='search' name='search' class="search-input" type="text" placeholder="Search for a movie..."/>
             <button type="submit" class="search-button">Search</button>
         </form>
     </div>

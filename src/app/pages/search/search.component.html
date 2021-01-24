@@ -2,7 +2,7 @@
 <div class="page-content">
     <h1>Search for a Movie</h1>
     <input type="text" [(ngModel)]="searchMovie"/>
-    <button (click)="clickSearchMovie()">Search</button>
+    <button (click)="getMovies()">Search</button>
     <div class="movie-card-container">
         <div *ngFor="let movie of movies" class="movie-card">
             <p>{{movie.title}}</p>
