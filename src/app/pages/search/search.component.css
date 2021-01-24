@@ -1,0 +1,26 @@
+.component {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: var(--primaryFont);
+}
+
+/* 
+    SEARCH 
+*/
+.search-container, .search-input {
+    width: 100%;
+}
+.search-input {
+    font-family: var(--secondaryFont);
+    outline: none;
+    font-size: 14px;
+    padding: 5px;
+}
+/* 
+    MOVIES 
+*/
+.no-movies {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 10px;
+}
