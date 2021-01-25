@@ -2,20 +2,20 @@
 <nav style="box-sizing:border-box;width:100%;height:80px;background-color:#C39F29;"></nav> <!-- Placeholder-->
 <div class="component">
     <div class="heading-container">
-        <img class="heading-background-image" src="../../../assets/Theater.png" />
-        <div class="search-container">
-            <input [(ngModel)]='search' class="search-input" type="text" placeholder="Search for a movie..."/>
-            <button (click)='clickSearch()' class="search-button">Search</button>
-        </div>
+        <img class="heading-background-image" src="../../../assets/images/theater.png" />
+        <form (ngSubmit)="clickSearch()" #searchForm="ngForm" class="search-container">
+            <input [(ngModel)]='search' name='search' class="search-input" type="text" placeholder="Search for a movie..."/>
+            <button type="submit" class="search-button">Search</button>
+        </form>
     </div>
     <div class="movies-container">
-        <h1>Trending</h1>
+        <h1 class="carousel-heading">Trending</h1>
         <div class="carousel-container">
-            <!-- Insert carousel once the component is made -->
+            <app-scroll-menu collectionType="{{collection.POPULAR}}"></app-scroll-menu>
         </div>
-        <h1>Explore</h1>
+        <h1 class="carousel-heading">Explore</h1>
         <div class="carousel-container">
-            <!-- Insert carousel once the component is made -->
+            <app-scroll-menu collectionType="{{collection.TOP}}"></app-scroll-menu>
         </div>
     </div>
 </div>
