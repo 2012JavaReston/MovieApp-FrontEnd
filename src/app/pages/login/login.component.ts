@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/interfaces/user';
+import { ApiService } from 'src/app/services/api.service';
 
 
 @Component({
@@ -8,14 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   username: string = ""; 
   password: string= ""; 
+  loginUser = new User(); 
+  
 
   onSubmit(): void{
-    console.log(this.username)
-    console.log(this.password)
+    this.loginUser.username = this.username; 
+    this.loginUser.password = this.password; 
+
+    this.apiService.loginUser(this.loginUser); 
+    
+    
   }
 
   ngOnInit(): void {
