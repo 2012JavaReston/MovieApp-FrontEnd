@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ScrollMenuComponent } from './components/scroll-menu/scroll-menu.component';
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
 import { LikedComponent } from './pages/liked/liked.component';
+import { MovieSearchCardComponent } from './components/movie-search-card/movie-search-card.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LikedComponent } from './pages/liked/liked.component';
     SearchComponent,
     ScrollMenuComponent,
     MovieItemComponent,
-    LikedComponent
+    LikedComponent,
+    MovieSearchCardComponent
   ],
   imports: [
     BrowserModule,

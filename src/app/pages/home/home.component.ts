@@ -10,13 +10,15 @@ import { TmdbCollections } from 'src/app/interfaces/TmdbCollections';
 export class HomeComponent implements OnInit {
 
   search: String = "";
-  constructor(private router: Router) { }
   collection: any = TmdbCollections;
+  
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   clickSearch(): void {
+    console.log(`SEARCH: ${this.search}`)
     this.router.navigate(['/search', this.search]);
   }
 
