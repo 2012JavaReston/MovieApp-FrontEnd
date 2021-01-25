@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 /**
  * This component requires a URL, ID, and Title to be passed in on initialization
@@ -12,7 +13,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MovieItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
   @Input() imageUrl : string = "";
   
   @Input() movieName: string = "";
@@ -23,7 +24,7 @@ export class MovieItemComponent implements OnInit {
   }
 
   openMovieInfo(): void{
-    console.log("Service injection method to redirect to movie info page using id property");
+    this.router.navigate(["movieInfo", this.id], );
   }
 
 }
