@@ -45,8 +45,11 @@ export class TmdbService {
         title: '',
         description: '',
         image: '',
-        releaseDate: ''
-      }
+        releaseDate: '',
+        director: '',
+        genre: '',
+        rating: 0
+        }
       if(jsonMovie["poster_path"] != null){
         movie.id = jsonMovie["id"];
         movie.title = `${jsonMovie["title"]}`;
