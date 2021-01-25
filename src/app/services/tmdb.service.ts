@@ -6,16 +6,15 @@ import { TmdbCollections } from '../interfaces/TmdbCollections';
 import { MovieInfoComponent } from '../pages/movie-info/movie-info.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TmdbService {
+
   private baseUrl = 'https://api.themoviedb.org/3/search/movie?api_key=' + ApiKey + '&query=';
 
-  constructor(
-    private http: HttpClient,
-    ) { }
+  constructor(private http: HttpClient) {}
 
-  public getMovies(url: string): Movie[]{
+  public getMovies(url: string): Movie[] {
     let movies: Movie[] = [];
     this.http.get<string>(this.baseUrl + url).subscribe(
       (data: any) => {
