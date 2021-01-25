@@ -53,7 +53,7 @@ export class TmdbService {
         let json: any = data;
         movie.id =  json["id"];
         movie.title =  json["title"];
-        movie.image = `https://image.tmdb.org/t/p/original/${json["poster_path"]}`;
+        movie.image = `https://image.tmdb.org/t/p/w500/${json["poster_path"]}`;
         movie.genre = json["genres"];
         movie.rating = json["vote_average"];
         movie.description = json["overview"];
@@ -79,7 +79,7 @@ export class TmdbService {
         movie.id = jsonMovie["id"];
         movie.title = `${jsonMovie["title"]}`;
         movie.description = `${jsonMovie["overview"]}`;
-        movie.image = `https://image.tmdb.org/t/p/original/${jsonMovie["poster_path"]}`;
+        movie.image = `https://image.tmdb.org/t/p/w200/${jsonMovie["poster_path"]}`;
         movie.releaseDate = `${jsonMovie["release_date"]}`;
         movies.push(movie);
       }
