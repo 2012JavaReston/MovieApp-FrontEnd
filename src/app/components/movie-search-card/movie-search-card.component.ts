@@ -7,11 +7,12 @@ import { Movie } from '../../interfaces/Movie';
   styleUrls: ['./movie-search-card.component.css']
 })
 export class MovieSearchCardComponent implements OnInit {
-  @Input() movie: Movie | null = null;
+  @Input() movie!: Movie;
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

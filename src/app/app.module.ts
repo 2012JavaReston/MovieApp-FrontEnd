@@ -13,6 +13,7 @@ import { ScrollMenuComponent } from './components/scroll-menu/scroll-menu.compon
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
 import { LikedComponent } from './pages/liked/liked.component';
 import { MovieSearchCardComponent } from './components/movie-search-card/movie-search-card.component';
+import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MovieSearchCardComponent } from './components/movie-search-card/movie-s
     ScrollMenuComponent,
     MovieItemComponent,
     LikedComponent,
-    MovieSearchCardComponent
+    MovieSearchCardComponent,
+    MovieInfoComponent
   ],
   imports: [
     BrowserModule,
