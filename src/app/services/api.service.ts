@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
 import { Comment } from '../interfaces/Comment';
 
@@ -76,15 +76,8 @@ export class ApiService {
 
   }
 
-  getCommentsByMovieId(id: number) : Comment[]{
-    let comments: Comment[] = [];
-    this.http.get<Comment[]>(`${this.baseUrl}comment/movieID/?movieID=${id}`).subscribe(
-      (data) => {
-        comments = data;
-      }
-    );
-
-    return comments;
+  getCommentsByMovieId(id: number) : Observable<Comment[]>{
+    return this.http.get<Comment[]>(`${this.baseUrl}comment/movieID/?movieID=${id}`);
   }
 }
 

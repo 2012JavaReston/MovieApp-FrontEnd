@@ -6,3 +6,6 @@
 <p>Rating: {{movie.rating}}</p>
 <p>Release Date: {{movie.releaseDate}}</p>
 <p>Overview: {{movie.description}}</p>
+<div class="comment-container">
+    <p class="comment" *ngFor="let entry of comments">{{entry.comment}}</p>
+</div>
