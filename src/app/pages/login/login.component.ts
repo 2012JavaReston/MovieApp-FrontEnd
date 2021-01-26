@@ -10,9 +10,6 @@ import { ApiService } from 'src/app/services/api.service';
 export class LoginComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
-
-  
-
   username: string = ""; 
   password: string= ""; 
   errorMessage: string =""; 
@@ -27,14 +24,8 @@ export class LoginComponent implements OnInit {
     .then()
     .catch(err =>{
       this.errorMessage = err; 
-    })
-    
-     
+    })  
   }
-
-
-
-  
 
   ngOnInit(): void {}
 }
