@@ -6,21 +6,21 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 py-5" *ngFor="let movie of movies">
+    <div class="col-md-12 py-5" *ngFor="let movie of likedMovies">
 
       <div class="card-custom-horizontal">
 
-        <div class="card-custom-img"><img class="cover" [src]="movie.img" alt="Image of movie poster"></div>
+        <div class="card-custom-img"><img class="cover" [src]="movie.image" alt="Image of movie poster"></div>
         <div class="card-custom-body justify-content-center">
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-4 ">
-                <p>Title: {{movie.details}}</p>
-                <p>Director:</p>
-                <p>Release Date: </p>
+                <p>Title: {{movie.title}}</p>
+                <p>Release Date: {{movie.releaseDate | date}}</p>
+                <p>Rating: {{movie.rating}}</p>
               </div>
               <div class="col-md-6 ">
-                Summary: {{movie.summary}}
+                Summary: {{movie.description}}
               </div>
             </div>
           </div>

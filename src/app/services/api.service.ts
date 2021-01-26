@@ -3,16 +3,18 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { User } from '../interfaces/user';
+import { Movie } from '../interfaces/Movie'; 
+import { TmdbService } from './tmdb.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  private baseUrl = 'http://localhost:8080/MovieApp/api/';
-  // private baseUrl = 'http://ec2-18-216-66-77.us-east-2.compute.amazonaws.com:8090/MovieApp/api/';
+  // private baseUrl = 'http://localhost:8080/MovieApp/api/';
+  private baseUrl = 'http://ec2-18-216-66-77.us-east-2.compute.amazonaws.com:8090/MovieApp/api/';
   private loggedInUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private tmdb: TmdbService) {}
 
 
   loginUser(user: User): Promise<string>{
@@ -22,7 +24,10 @@ export class ApiService {
           let userStore = JSON.stringify(data); 
           localStorage.setItem("user", userStore); 
           this.loggedInUser.next(data); 
-          this.router.navigate(['home']);  
+          this.router.navigate(['home']); 
+
+          console.log(this.loggedInUser); 
+          
           return resolve("Succesfully Logged In")  
         } else {
           return reject("Username or Password is incorrect");
@@ -74,6 +79,29 @@ export class ApiService {
     return message;
 
   }
+
+  getLikedMovies(): Promise<any>{
+
+    let likedMovies: Movie[] = []; 
+    return new Promise((resolve, reject) => {
+      
+      this.http.get<any>(`${this.baseUrl}lists/user/likedlist?userID=${this.loggedInUser.value?.id}`)
+      .subscribe((data => {
+        if(data.length!=0){
+          for(let movie of data){  
+            likedMovies.push(this.tmdb.getMovieById(movie.movieID)); 
+          }
+          return resolve(likedMovies); 
+        } else {         
+          return  reject("No movies"); 
+        }
+        
+      }))
+    })
+    
+  }
+
+  
 }
 
 
