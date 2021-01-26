@@ -14,6 +14,7 @@
           <label for="password">P a s s w o r d</label><br>
           <input type="password" class="form-control" [(ngModel)]="password" name="password" id="password">
         </div>
+        <div><span class="error-message" *ngIf="errorMessage">{{errorMessage}}</span></div>
         <div class="text-center">
           <button type="submit" id="submitButton" class="btn btn-lg">Submit</button>
         </div>
