@@ -14,16 +14,21 @@ export class LoginComponent implements OnInit {
 
   username: string = ""; 
   password: string= ""; 
+  errorMessage: string =""; 
   loginUser = new User(); 
-  
+  successful = false; 
 
   onSubmit(): void{
     this.loginUser.username = this.username; 
     this.loginUser.password = this.password; 
 
-    this.apiService.loginUser(this.loginUser); 
+    this.apiService.loginUser(this.loginUser)
+    .then()
+    .catch(err =>{
+      this.errorMessage = err; 
+    })
     
-    
+     
   }
 
   ngOnInit(): void {
