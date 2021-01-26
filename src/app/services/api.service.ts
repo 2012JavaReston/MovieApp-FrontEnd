@@ -81,10 +81,12 @@ export class ApiService {
   }
 
   getLikedMovies(): Promise<any>{
-
     let likedMovies: Movie[] = []; 
+    console.log(this.loggedInUser.value?.id); 
+    this.loggedInUser.subscribe(value => console.log(value))
+
+   
     return new Promise((resolve, reject) => {
-      
       this.http.get<any>(`${this.baseUrl}lists/user/likedlist?userID=${this.loggedInUser.value?.id}`)
       .subscribe((data => {
         if(data.length!=0){
@@ -97,8 +99,28 @@ export class ApiService {
         }
         
       }))
-    })
-    
+    }) 
+  }
+
+  getWatchList(): Promise<any>{
+    let watchList: Movie[] = []; 
+    //  this.loggedInUser.subscribe(console.log);
+    this.loggedInUser.subscribe(value => console.log(value))
+    return new Promise((resolve, reject) => {
+      this.http.get<any>(`${this.baseUrl}lists/user/watchlist?userID=${this.loggedInUser.value?.id}`)
+      .subscribe((data => {
+        if(data.length!=0){
+          for(let movie of data){  
+            console.log(movie); 
+            watchList.push(this.tmdb.getMovieById(movie.movieID)); 
+          }
+          return resolve(watchList); 
+        } else {         
+          return  reject("No movies"); 
+        }
+        
+      }))
+    }) 
   }
 
   

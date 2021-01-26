@@ -14,6 +14,7 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
 import { LikedComponent } from './pages/liked/liked.component';
 import { MovieSearchCardComponent } from './components/movie-search-card/movie-search-card.component';
 import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
+import { WatchComponent } from './pages/watch/watch.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
     MovieItemComponent,
     LikedComponent,
     MovieSearchCardComponent,
-    MovieInfoComponent
+    MovieInfoComponent,
+    WatchComponent
   ],
   imports: [
     BrowserModule,

@@ -52,8 +52,7 @@
     padding: 25px 0 50px 0; 
   }
 
-
-  .info{
-    min-width: 300px;
-    max-width: 302px; 
-  }
+.info{
+  max-width: 303px;
+  min-width: 300px;
+}
