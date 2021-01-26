@@ -10,15 +10,21 @@ import { ApiService } from 'src/app/services/api.service';
 export class LoginComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
-  username: string = '';
-  password: string = '';
-  loginUser = new User();
+  username: string = ""; 
+  password: string= ""; 
+  errorMessage: string =""; 
+  loginUser = new User(); 
+  successful = false; 
 
-  onSubmit(): void {
-    this.loginUser.username = this.username;
-    this.loginUser.password = this.password;
+  onSubmit(): void{
+    this.loginUser.username = this.username; 
+    this.loginUser.password = this.password; 
 
-    this.apiService.loginUser(this.loginUser);
+    this.apiService.loginUser(this.loginUser)
+    .then()
+    .catch(err =>{
+      this.errorMessage = err; 
+    })  
   }
 
   ngOnInit(): void {}
