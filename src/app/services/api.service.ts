@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { User } from '../interfaces/user';
+import { Comment } from '../interfaces/Comment';
 
 @Injectable({
   providedIn: 'root',
@@ -73,6 +74,17 @@ export class ApiService {
       });
     return message;
 
+  }
+
+  getCommentsByMovieId(id: number) : Comment[]{
+    let comments: Comment[] = [];
+    this.http.get<Comment[]>(`${this.baseUrl}comment/movieID/?movieID=${id}`).subscribe(
+      (data) => {
+        comments = data;
+      }
+    );
+
+    return comments;
   }
 }
 

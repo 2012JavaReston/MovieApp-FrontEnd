@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Movie } from 'src/app/interfaces/Movie';
+import { ApiService } from 'src/app/services/api.service';
 import { TmdbService } from 'src/app/services/tmdb.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class MovieInfoComponent implements OnInit {
   movie!: Movie;
   
   id!: number;
-  constructor(private tmdbService: TmdbService, private route: ActivatedRoute) { }
+  constructor(private tmdbService: TmdbService, private route: ActivatedRoute, private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.id = 651571;
@@ -21,7 +22,10 @@ export class MovieInfoComponent implements OnInit {
         this.id = params['id'];
     });
     this.movie = this.tmdbService.getMovieById(this.id);
-    console.log(this.movie);
+  }
+
+  getComment(){
+    this.apiService.getCommentsByMovieId(1);
   }
 
 }
