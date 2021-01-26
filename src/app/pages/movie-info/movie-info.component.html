@@ -1,1 +1,8 @@
-<p>movie-info works!</p>
+<h1>{{movie.title}}</h1>
+<img [src]="movie.image" [alt]="movie.title">
+<div class="genre-container">
+    <p>Genre(s): <span *ngFor="let genre of movie.genre">{{genre.name}}</span></p>
+</div>
+<p>Rating: {{movie.rating}}</p>
+<p>Release Date: {{movie.releaseDate}}</p>
+<p>Overview: {{movie.description}}</p>
