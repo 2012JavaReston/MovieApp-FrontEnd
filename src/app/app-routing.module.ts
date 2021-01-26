@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'search', component: SearchComponent },
   { path: 'search/:movie', component: SearchComponent },
-  { path: 'liked', component: LikedComponent },
+  { path: 'liked', component: LikedComponent, canActivate: [LoggedInGuard]},
   { path: 'movieInfo/:id', component: MovieInfoComponent}
 
 ];
