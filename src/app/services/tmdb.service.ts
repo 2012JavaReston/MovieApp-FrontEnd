@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Movie } from '../interfaces/Movie';
 import { ApiKey } from '../../secrets/ApiKey';
+import { Observable } from 'rxjs';
 import { TmdbCollections } from '../interfaces/TmdbCollections';
 import { MovieInfoComponent } from '../pages/movie-info/movie-info.component';
 
@@ -14,14 +15,8 @@ export class TmdbService {
 
   constructor(private http: HttpClient) {}
 
-  public getMovies(url: string): Movie[] {
-    let movies: Movie[] = [];
-    this.http.get<string>(this.baseUrl + url).subscribe(
-      (data: any) => {
-        this.dataToMovieArray(data, movies);
-      }
-    );
-    return movies;
+  public getMovies(url: string): Observable<string> {
+    return this.http.get<string>(this.baseUrl + url)
   }
 
   public getMovieCollection(type: string): Movie[]{
@@ -83,5 +78,30 @@ export class TmdbService {
         movies.push(movie);
       }
     });
+  }
+
+  public dataToMovies(data : any): Movie[] {
+    let movies: Movie[] = []
+    let jsonMovies: any = data["results"];
+    jsonMovies.forEach((jsonMovie: any) => {
+      let movie: Movie = {
+        id: 0,
+        title: '',
+        description: '',
+        image: '',
+        releaseDate: '',
+        genre: '',
+        rating: 0
+        }
+      if(jsonMovie["poster_path"] != null){
+        movie.id = jsonMovie["id"];
+        movie.title = `${jsonMovie["title"]}`;
+        movie.description = `${jsonMovie["overview"]}`;
+        movie.image = `https://image.tmdb.org/t/p/w200/${jsonMovie["poster_path"]}`;
+        movie.releaseDate = `${jsonMovie["release_date"]}`;
+        movies.push(movie);
+      }
+    });
+    return movies;
   }
 }
