@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
   searchMovie: string = "";
   movies: Movie[] = [];
   private sub: any;
-  isMovies: boolean = true;
+  isSearching: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private tmdbService: TmdbService,
@@ -25,8 +25,6 @@ export class SearchComponent implements OnInit {
       this.searchMovie = params['movie'];
       if(this.searchMovie){
         this.getMovies();
-      } else {
-        this.isMovies = false;
       }
     });
   }
@@ -37,18 +35,16 @@ export class SearchComponent implements OnInit {
 
   getMovies() {
     this.location.go(`search/${this.searchMovie}`);
-    this.isMovies = true;
-    this.movies = []
-    setTimeout(() => {
-      this.movies = this.tmdbService.getMovies(this.searchMovie);
-    }, 500)
-    setTimeout(() => {
-      if(this.movies.length === 0){
-        this.isMovies = false;
-      } else {
-        this.isMovies = true;
+    this.movies = [];
+    this.isSearching = true;
+    this.tmdbService.getMovies(this.searchMovie).subscribe(
+      (data) => {
+        this.movies = this.tmdbService.dataToMovieArray(data);
+        this.isSearching = false;
+        console.log(this.movies)
       }
-    },3000)
+    );
+
   }
 
 }
