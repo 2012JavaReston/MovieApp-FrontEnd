@@ -83,6 +83,10 @@ export class ApiService {
   addCommentByMovieId(entry: Comment){
     this.http.post<Comment>(`${this.baseUrl}comment/insert`, entry).toPromise();
   }
+
+  deleteCommentById(id: number){
+    this.http.delete(`${this.baseUrl}comment/delete/?id=${id}`).toPromise();
+  }
 }
 
 
