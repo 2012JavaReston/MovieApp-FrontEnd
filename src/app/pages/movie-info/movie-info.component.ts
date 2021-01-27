@@ -44,6 +44,7 @@ export class MovieInfoComponent implements OnInit {
       userID: user
     }
     this.apiService.addCommentByMovieId(entry);
+    this.commentContent = "";
   }
 
 }
