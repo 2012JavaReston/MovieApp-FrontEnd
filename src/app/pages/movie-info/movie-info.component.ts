@@ -12,13 +12,13 @@ import { Comment } from 'src/app/interfaces/Comment';
 })
 export class MovieInfoComponent implements OnInit {
   movie!: Movie;
-  
   id!: number;
   comments!: Comment[];
+  commentContent: string = "";
+ 
   constructor(private tmdbService: TmdbService, private route: ActivatedRoute, private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.id = 651571;
     this.route.params.subscribe(
       (params) => {
         this.id = params['id'];
@@ -29,6 +29,21 @@ export class MovieInfoComponent implements OnInit {
         this.comments = data;
       }
     );
+  }
+
+  addComment(){
+    let local = localStorage.getItem("user");
+    let user: number = 0;
+    if(typeof local === 'string'){
+      user = JSON.parse(local).id;
+    }
+    let entry: Comment = {
+      id : 0,
+      comment: this.commentContent,
+      movieID: this.id,
+      userID: user
+    }
+    this.apiService.addCommentByMovieId(entry);
   }
 
 }

@@ -79,6 +79,10 @@ export class ApiService {
   getCommentsByMovieId(id: number) : Observable<Comment[]>{
     return this.http.get<Comment[]>(`${this.baseUrl}comment/movieID/?movieID=${id}`);
   }
+
+  addCommentByMovieId(entry: Comment){
+    this.http.post<Comment>(`${this.baseUrl}comment/insert`, entry).toPromise();
+  }
 }
 
 

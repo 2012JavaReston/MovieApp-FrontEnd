@@ -6,6 +6,8 @@
 <p>Rating: {{movie.rating}}</p>
 <p>Release Date: {{movie.releaseDate}}</p>
 <p>Overview: {{movie.description}}</p>
-<div class="comment-container">
+<input [(ngModel)]="commentContent">
+<button (click)="addComment()">Submit</button>
+<div *ngIf="comments" class="comment-container">
     <p class="comment" *ngFor="let entry of comments">{{entry.comment}}</p>
 </div>
