@@ -47,4 +47,12 @@ export class MovieInfoComponent implements OnInit {
     this.commentContent = "";
   }
 
+  deleteComment(){
+
+  }
+
+  updateComment(){
+    
+  }
+
 }

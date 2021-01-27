@@ -9,5 +9,5 @@
 <input [(ngModel)]="commentContent">
 <button (click)="addComment()">Submit</button>
 <div *ngIf="comments" class="comment-container">
-    <p class="comment" *ngFor="let entry of comments">{{entry.comment}}</p>
+    <app-comment-entry *ngFor="let entry of comments" [userName]="entry.userID" [commentText]="entry.comment"></app-comment-entry>
 </div>
