@@ -25,9 +25,7 @@ export class ApiService {
           localStorage.setItem("user", userStore); 
           this.loggedInUser.next(data); 
           this.router.navigate(['home']); 
-
-          console.log(this.loggedInUser); 
-          
+          console.log(this.loggedInUser);   
           return resolve("Succesfully Logged In")  
         } else {
           return reject("Username or Password is incorrect");
@@ -85,22 +83,14 @@ export class ApiService {
     console.log(this.loggedInUser.value?.id); 
     this.loggedInUser.subscribe(value => console.log(value))
 
-   
     return new Promise((resolve, reject) => { 
       this.http.get<any>(`${this.baseUrl}lists/user/likedlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true})
       .subscribe((data => {
+        console.log(data); 
         if(data &&  data.length!=0){
           for(let movie of data){  
-            // console.log(movie)
-            
-              let selected = this.tmdb.getMovieById(movie.movieID);
-              
-              
-              likedMovies.push(selected); 
-              
-              
-            
-            
+              let selected = this.tmdb.getMovieById(movie.movieID);                    
+              likedMovies.push(selected);  
           }
           return resolve(likedMovies); 
         } else {         
