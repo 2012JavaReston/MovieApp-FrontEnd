@@ -11,9 +11,24 @@ export class CommentEntryComponent implements OnInit {
   @Input()
   commentText!: string;
 
+  editable: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
+    let local = localStorage.getItem("user");
+    if(typeof local === "string"){
+      let user = JSON.parse(local).id;
+      this.editable = this.userName === user;
+    }
+  }
+
+  deleteComment(){
+    console.log("delete");
+  }
+
+  updateComment(){
+    console.log('update');
   }
 
 }

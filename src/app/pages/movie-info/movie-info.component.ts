@@ -48,11 +48,11 @@ export class MovieInfoComponent implements OnInit {
   }
 
   deleteComment(){
-
+    console.log("delete");
   }
 
   updateComment(){
-    
+    console.log('update');
   }
 
 }
