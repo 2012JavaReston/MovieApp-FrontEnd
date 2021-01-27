@@ -12,6 +12,8 @@ export class ApiService {
   // private baseUrl = 'http://ec2-18-216-66-77.us-east-2.compute.amazonaws.com:8090/MovieApp/api/';
   private loggedInUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
+  public currentUser: User | null = null;
+
   constructor(private http: HttpClient, private router: Router) {}
 
 
@@ -22,6 +24,7 @@ export class ApiService {
           let userStore = JSON.stringify(data); 
           localStorage.setItem("user", userStore); 
           this.loggedInUser.next(data); 
+          this.setCurrentUser(data);
           this.router.navigate(['home']);  
           return resolve("Succesfully Logged In")  
         } else {
@@ -54,7 +57,7 @@ export class ApiService {
     console.log("Clicking this");
     this.loggedInUser.next(null); 
     localStorage.clear(); 
-    
+    this.removeCurrentUser();
   }
 
   registerNewUser(newUser: User) {
@@ -73,6 +76,12 @@ export class ApiService {
       });
     return message;
 
+  }
+  private setCurrentUser(data: any) {
+
+  }
+  private removeCurrentUser() {
+    this.currentUser = null;
   }
 }
 
