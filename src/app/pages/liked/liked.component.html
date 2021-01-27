@@ -11,23 +11,33 @@
       <div class="card-custom-horizontal">
 
         <div class="card-custom-img"><img class="cover" [src]="movie.image" alt="Image of movie poster"></div>
-        <div class="card-custom-body justify-content-center">
+        <div class="card-custom-body">
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-4 info">
-                <p>Title: {{movie.title}}</p>
-                <p>Release Date: {{movie.releaseDate | date}}</p>
-                <p>Rating: {{movie.rating}}</p>
+                <p><span class="title">Title:</span> {{movie.title}}</p>
+                <p><span class="title">Release Date:</span> {{movie.releaseDate | date}}</p>
+                <p><span class="title">Rating:</span> {{movie.rating}}</p>
               </div>
-              <div class="col-md-6 ">
-                Summary: {{movie.description}}
+              <div class="col-md-8 ">
+                <span class="title">Summary:</span> 
+                <div>
+                  {{movie.description}}
+                </div>
+                
               </div>
+                
+            </div>
+            <div class="row remove-button">
+              <button class="btn btn-danger">Remove</button>
             </div>
           </div>
-                     
+          
         </div>
-      </div>
 
+        
+      </div>
+      
     </div>
   </div>
 </div>

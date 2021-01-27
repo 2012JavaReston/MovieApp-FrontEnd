@@ -14,12 +14,16 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-md-4 info">
-                  <p>Title: {{movie.title}}</p>
-                  <p>Release Date: {{movie.releaseDate | date}}</p>
-                  <p>Rating: {{movie.rating}}</p>
+                  <p><span class="title">Title:</span> {{movie.title}}</p>
+                  <p><span class="title">Release Date:</span> {{movie.releaseDate | date}}</p>
+                  <p><span class="title">Rating: </span>{{movie.rating}}</p>
                 </div>
                 <div *ngIf="movie.description" class="col-md-6 ">
-                  Summary: {{movie.description}}
+                <span class="title">Summary:</span> 
+                <div>
+                  {{movie.description}}
+                </div>
+                
                 </div>
               </div>
             </div>

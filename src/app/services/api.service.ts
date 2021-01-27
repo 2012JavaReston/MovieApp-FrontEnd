@@ -10,8 +10,8 @@ import { TmdbService } from './tmdb.service';
   providedIn: 'root',
 })
 export class ApiService {
-  // private baseUrl = 'http://localhost:8080/MovieApp/api/';
-  private baseUrl = 'http://ec2-18-216-66-77.us-east-2.compute.amazonaws.com:8090/MovieApp/api/';
+  private baseUrl = 'http://localhost:8080/MovieApp/api/';
+  // private baseUrl = 'http://ec2-18-216-66-77.us-east-2.compute.amazonaws.com:8090/MovieApp/api/';
   private loggedInUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
   constructor(private http: HttpClient, private router: Router, private tmdb: TmdbService) {}
@@ -19,7 +19,7 @@ export class ApiService {
 
   loginUser(user: User): Promise<string>{
     return new Promise((resolve, reject) =>{
-      this.http.post<User>(`${this.baseUrl}user/login`, user).subscribe(data => {
+      this.http.post<User>(`${this.baseUrl}user/login`, user, {withCredentials: true}).subscribe(data => {
         if(data != null && data.firstName != null){ 
           let userStore = JSON.stringify(data); 
           localStorage.setItem("user", userStore); 
@@ -86,10 +86,10 @@ export class ApiService {
     this.loggedInUser.subscribe(value => console.log(value))
 
    
-    return new Promise((resolve, reject) => {
-      this.http.get<any>(`${this.baseUrl}lists/user/likedlist?userID=${this.loggedInUser.value?.id}`)
+    return new Promise((resolve, reject) => { 
+      this.http.get<any>(`${this.baseUrl}lists/user/likedlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true})
       .subscribe((data => {
-        if(data.length!=0){
+        if(data &&  data.length!=0){
           for(let movie of data){  
             likedMovies.push(this.tmdb.getMovieById(movie.movieID)); 
           }
@@ -107,8 +107,9 @@ export class ApiService {
     //  this.loggedInUser.subscribe(console.log);
     this.loggedInUser.subscribe(value => console.log(value))
     return new Promise((resolve, reject) => {
-      this.http.get<any>(`${this.baseUrl}lists/user/watchlist?userID=${this.loggedInUser.value?.id}`)
+      this.http.get<any>(`${this.baseUrl}lists/user/watchlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true})
       .subscribe((data => {
+        console.log("hello " + data); 
         if(data.length!=0){
           for(let movie of data){  
             console.log(movie); 
