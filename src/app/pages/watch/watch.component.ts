@@ -24,4 +24,12 @@ export class WatchComponent implements OnInit {
     })
   }
 
+  remove(movie: Movie) {
+    
+   /** Will need to remove from the db, but this removes from view.*/
+    this.watchList = this.watchList.filter(selected => selected != movie); 
+    
+  }
+
+
 }

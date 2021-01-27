@@ -28,4 +28,10 @@ export class LikedComponent implements OnInit {
     this.api.logout(); 
   }
 
+  remove(movie: Movie){ 
+
+    /**Will need to remove from the DB, when endpoint is set up */
+    this.likedMovies = this.likedMovies.filter(selected => selected != movie); 
+  }
+
 }
