@@ -7,6 +7,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchComponent } from './pages/search/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ScrollMenuComponent } from './components/scroll-menu/scroll-menu.component';
@@ -23,6 +24,7 @@ import { WatchComponent } from './pages/watch/watch.component';
     LandingComponent,
     LoginComponent,
     RegisterComponent,
+    NavbarComponent,
     SearchComponent,
     ScrollMenuComponent,
     MovieItemComponent,
