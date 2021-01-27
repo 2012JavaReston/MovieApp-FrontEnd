@@ -33,7 +33,11 @@ export class ScrollMenuComponent implements OnInit {
    */
   ngOnInit(): void {
     if(this.collectionType !== undefined){
-      this.movieArray = this.movieService.getMovieCollection(this.collectionType);
+      this.movieService.getMovieCollection(this.collectionType).subscribe(
+        data => {
+          this.movieArray = this.movieService.dataToMovieArray(data);
+        }
+      );
     }
   }
 

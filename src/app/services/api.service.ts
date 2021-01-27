@@ -10,8 +10,8 @@ import { TmdbService } from './tmdb.service';
   providedIn: 'root',
 })
 export class ApiService {
-  private baseUrl = 'http://localhost:8080/MovieApp/api/';
-  // private baseUrl = 'http://ec2-18-216-66-77.us-east-2.compute.amazonaws.com:8090/MovieApp/api/';
+  // private baseUrl = 'http://localhost:8080/MovieApp/api/';
+  private baseUrl = 'http://ec2-18-216-66-77.us-east-2.compute.amazonaws.com:8090/MovieApp/api/';
   private loggedInUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
   constructor(private http: HttpClient, private router: Router, private tmdb: TmdbService) {}
