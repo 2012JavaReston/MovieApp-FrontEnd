@@ -1,0 +1,47 @@
+.component {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--primaryFont);
+    color: var(--theBlackColor);
+}
+/* 
+    HEADING SECTION
+*/
+.heading-container {
+    position: relative;
+    text-align: center;
+    color: var(--primaryGoldColor);
+    font-size: 36px;
+}
+.heading-centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.heading-background-image {
+    display: block;
+    margin: 0;
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.box-row {
+    display: flex;
+    justify-content:space-around;
+}
+
+.box {
+    float:left;
+    background-color: rgb(167, 164, 164);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 300px;
+    height: 200px;
+}
+
+.centered{
+    position: absolute;
+    left: 45%;
+}
