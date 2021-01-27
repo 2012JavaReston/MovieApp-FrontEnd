@@ -29,7 +29,6 @@ import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
     MovieItemComponent,
     LikedComponent,
     MovieSearchCardComponent,
-    MovieSearchCardComponent,
     MovieInfoComponent
   ],
   imports: [
