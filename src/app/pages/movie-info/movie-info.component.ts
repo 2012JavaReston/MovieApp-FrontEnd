@@ -20,8 +20,11 @@ export class MovieInfoComponent implements OnInit {
       (params) => {
         this.id = params['id'];
     });
-    this.movie = this.tmdbService.getMovieById(this.id);
-    console.log(this.movie);
+    this.tmdbService.getMovieById(this.id).subscribe(
+      data => {
+        this.movie = this.tmdbService.dataToMovie(data);
+      }
+    );
   }
 
 }

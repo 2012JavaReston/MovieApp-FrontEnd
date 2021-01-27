@@ -39,8 +39,9 @@ export class SearchComponent implements OnInit {
     this.isSearching = true;
     this.tmdbService.getMovies(this.searchMovie).subscribe(
       (data) => {
-        this.movies = this.tmdbService.dataToMovies(data);
+        this.movies = this.tmdbService.dataToMovieArray(data);
         this.isSearching = false;
+        console.log(this.movies)
       }
     );
 
