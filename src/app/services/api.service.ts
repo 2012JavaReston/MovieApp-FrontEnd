@@ -91,7 +91,16 @@ export class ApiService {
       .subscribe((data => {
         if(data &&  data.length!=0){
           for(let movie of data){  
-            likedMovies.push(this.tmdb.getMovieById(movie.movieID)); 
+            // console.log(movie)
+            
+              let selected = this.tmdb.getMovieById(movie.movieID);
+              
+              
+              likedMovies.push(selected); 
+              
+              
+            
+            
           }
           return resolve(likedMovies); 
         } else {         

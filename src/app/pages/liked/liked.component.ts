@@ -22,7 +22,6 @@ export class LikedComponent implements OnInit {
      .catch(error => {
        console.log(error); 
      })
-
   }
 
   logout(){
