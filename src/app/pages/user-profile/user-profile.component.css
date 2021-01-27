@@ -1,0 +1,7 @@
+.component {
+    box-sizing: border-box;
+}
+.all-user-info {
+    max-width: 300px;
+    margin: 0 auto;
+}
