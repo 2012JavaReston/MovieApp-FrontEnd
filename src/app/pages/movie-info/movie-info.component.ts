@@ -69,11 +69,19 @@ export class MovieInfoComponent implements OnInit {
   }
 
   likeMovie(){
-
+    this.apiService.addMovieToLikeList(this.movie.id).subscribe(
+      (data) => {
+        console.log("LIKE ME");
+      }
+    );
   }
 
   watchMovie(){
-    
+    this.apiService.addMovieToWatchList(this.movie.id).subscribe(
+      (data) => {
+        console.log("WATCH ME");
+      }
+    )
   }
 
 }
