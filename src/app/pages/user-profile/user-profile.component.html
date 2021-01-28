@@ -1,1 +1,30 @@
-<p>user-profile works!</p>
+<div *ngIf='user' class="component">
+    <div class="all-user-info">
+        <p class="heading">User Info</p>
+        <div class="user-info-container">
+            <p class="user-header">Username:</p>
+            <p class="user-info">{{user.username}}</p>
+        </div>
+        <div class="user-info-container">
+            <p class="user-header">First Name:</p>
+            <p class="user-info">{{user.firstName}}</p>
+        </div>
+        <div class="user-info-container">
+            <p class="user-header">Last Name:</p>
+            <p class="user-info">{{user.lastName}}</p>
+        </div>
+        <div class="user-info-container">
+            <p class="user-header">Password:</p>
+            <p class="user-info"></p>
+        </div>
+    </div>
+    <div class="liked-movies-container">
+        <p class="heading">Liked Movies</p>
+        <div class="liked-movies">
+            <div class="movie-container" *ngFor="let movie of likedMovies">
+                <img class="movie-image" routerLink="/movieInfo/movie.id" [src]="movie.image" [alt]="movie.title">
+            </div>
+        </div>
+        <a class="view-more" routerLink="/liked">View More of Your Liked Movies</a>
+    </div>
+</div>

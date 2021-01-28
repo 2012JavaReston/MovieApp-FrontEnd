@@ -8,6 +8,7 @@ import { LoginComponent} from './pages/login/login.component';
 import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { SearchComponent } from './pages/search/search.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { WatchComponent } from './pages/watch/watch.component';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'search/:movie', component: SearchComponent },
   { path: 'liked', component: LikedComponent, canActivate: [LoggedInGuard]},
   { path: 'movieInfo/:id', component: MovieInfoComponent},
+  { path: 'profile', component: UserProfileComponent, canActivate: [LoggedInGuard]},
   { path: 'watch', component: WatchComponent, canActivate: [LoggedInGuard]}
 
 ];
