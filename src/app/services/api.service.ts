@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
 import { Movie } from '../interfaces/Movie'; 
-import { TmdbService } from './tmdb.service';
+
 import { MovieInfoComponent } from '../pages/movie-info/movie-info.component';
 import { Comment } from '../interfaces/Comment';
 
@@ -17,10 +17,7 @@ export class ApiService {
   // private baseUrl = 'http://ec2-18-216-66-77.us-east-2.compute.amazonaws.com:8090/MovieApp/api/';
   private loggedInUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
-  constructor(private http: HttpClient, private router: Router, private tmdb: TmdbService) {}
-
-  //tryingg something here
-  public userLikedList: BehaviorSubject<Movie[]> = new BehaviorSubject<Movie[]>([]); 
+  constructor(private http: HttpClient, private router: Router) {}
 
   loginUser(user: User): Promise<string>{
     return new Promise((resolve, reject) =>{
@@ -60,8 +57,8 @@ export class ApiService {
 
   logout(){
     console.log("Clicking this");
-    this.loggedInUser.next(null); 
     localStorage.clear(); 
+    this.loggedInUser = new BehaviorSubject<User | null >(null); 
     
   }
 
@@ -83,61 +80,24 @@ export class ApiService {
 
   }
 
-  getLikedMovies(): Promise<any>{
-    let likedMovies: any[] = []; 
-    console.log(this.loggedInUser.value?.id); 
-    this.loggedInUser.subscribe(value => console.log(value));
-    return new Promise((resolve, reject) => { 
-      this.http.get<any>(`${this.baseUrl}lists/user/likedlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true})
-      .subscribe((data => {
-        console.log(data); 
-        if(data &&  data.length!=0){
-          for(let movie of data){  
-            likedMovies.push(movie); 
-          }
-          return resolve(likedMovies); 
-        } else {         
-          return  reject("No movies"); 
-        }
-        
-      }))
-    }) 
+  getLikedMovies(): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}lists/user/likedlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true});
   }
 
-  getWatchList(): Promise<any>{
-    let watchList: Movie[] = []; 
-    this.loggedInUser.subscribe(value => console.log(value))
-    return new Promise((resolve, reject) => {
-      this.http.get<any>(`${this.baseUrl}lists/user/watchlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true})
-      .subscribe((data => { 
-        if(data && data.length!=0){
-          for(let movie of data){  
-              watchList.push(movie);  
-          }
-          return resolve(watchList); 
-        } else {         
-          return  reject("No movies"); 
-        }
-        
-      }))
-    }) 
+
+  getWatchList(): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}lists/user/watchlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true})
   }
 
-  removeFromLikedList(movieID: number): Promise<any>{
-    console.log(this.loggedInUser.value?.id); 
-    return new Promise((resolve, reject) =>{
-      this.http.post<any>(`${this.baseUrl}lists/removelike?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials: true})
-      .subscribe((data => {
-        if(!data){
-          return resolve("Deleted"); 
-        } else {
-          return reject("Something went wrong!"); 
-        }
-      }))
-      
-    })
+
+  removeFromLikedList(movieID: number): Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}lists/removelike?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials: true})
   }
 
+  removeFromWatchList(movieID: number): Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}lists/removewatch?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials: true})
+  }
+  
   
   getCommentsByMovieId(id: number) : Observable<Comment[]>{
     return this.http.get<Comment[]>(`${this.baseUrl}comment/movieID/?movieID=${id}`);
