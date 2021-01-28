@@ -22,3 +22,26 @@
     display: inline;
     margin-left: 15px;
 }
+.liked-movies {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    padding: 0 42px;
+    width: 100%;
+}
+.movie-container {
+    width: fit-content;
+    height: fit-content;
+    margin: 8px;
+}
+.movie-image {
+    width: 150px;
+    height: 225px;
+    object-fit: cover;
+}
+.view-more {
+    font-size: 24px;
+    display: block;
+    /* width: 100%; */
+    margin: 10px 0 10px 20px;
+}
