@@ -9,7 +9,7 @@
 
       <div class="card-custom-horizontal">
 
-        <div class="card-custom-img"><img class="cover" [src]="movie.image" alt="Image of movie poster"></div>
+        <div class="card-custom-img"><app-movie-item class="cover" [imageUrl]="movie.image" [movieName]="movie.title" [id]="movie.id"></app-movie-item></div>
         <div class="card-custom-body">
           <div class="container-fluid">
             <div class="row">
