@@ -1,0 +1,9 @@
+<div>
+    <p><strong>{{userName}}:</strong>{{commentText}}</p>
+    <div *ngIf="editable">
+        <button (click)="updateComment()">Update</button>
+        <button (click)="deleteComment()">Delete</button>
+    </div>
+    
+</div>
+

@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
 import { Movie } from '../interfaces/Movie'; 
 import { TmdbService } from './tmdb.service';
 import { MovieInfoComponent } from '../pages/movie-info/movie-info.component';
+import { Comment } from '../interfaces/Comment';
+
 
 @Injectable({
   providedIn: 'root',
@@ -137,6 +139,18 @@ export class ApiService {
   }
 
   
+  getCommentsByMovieId(id: number) : Observable<Comment[]>{
+    return this.http.get<Comment[]>(`${this.baseUrl}comment/movieID/?movieID=${id}`);
+  }
+
+  addCommentByMovieId(entry: Comment){
+    return this.http.post<Comment>(`${this.baseUrl}comment/insert`, entry);
+  }
+
+  deleteCommentById(id: number){
+    return this.http.delete(`${this.baseUrl}comment/delete/?id=${id}`);
+  }
+
 }
 
 
