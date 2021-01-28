@@ -6,28 +6,38 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 py-5" *ngFor="let movie of movies">
+    <div class="col-md-12 py-5" *ngFor="let movie of likedMovies">
 
       <div class="card-custom-horizontal">
 
-        <div class="card-custom-img"><img class="cover" [src]="movie.img" alt="Image of movie poster"></div>
-        <div class="card-custom-body justify-content-center">
+        <div class="card-custom-img"><img class="cover" [src]="movie.image" alt="Image of movie poster"></div>
+        <div class="card-custom-body">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-md-4 ">
-                <p>Title: {{movie.details}}</p>
-                <p>Director:</p>
-                <p>Release Date: </p>
+              <div class="col-md-4 info">
+                <p><span class="title">Title:</span> {{movie.title}}</p>
+                <p><span class="title">Release Date:</span> {{movie.releaseDate | date}}</p>
+                <p><span class="title">Rating:</span> {{movie.rating}}</p>
               </div>
-              <div class="col-md-6 ">
-                Summary: {{movie.summary}}
+              <div class="col-md-8 ">
+                <span class="title">Summary:</span> 
+                <div>
+                  {{movie.description}}
+                </div>
+                
               </div>
+                
+            </div>
+            <div class="row remove-button">
+              <button (click) = "remove(movie)" class="btn btn-danger">Remove</button>
             </div>
           </div>
-                     
+          
         </div>
-      </div>
 
+        
+      </div>
+      
     </div>
   </div>
 </div>
