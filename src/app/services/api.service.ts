@@ -17,6 +17,8 @@ export class ApiService {
 
   constructor(private http: HttpClient, private router: Router, private tmdb: TmdbService) {}
 
+  //tryingg something here
+  public userLikedList: BehaviorSubject<Movie[]> = new BehaviorSubject<Movie[]>([]); 
 
   loginUser(user: User): Promise<string>{
     return new Promise((resolve, reject) =>{
@@ -80,20 +82,16 @@ export class ApiService {
   }
 
   getLikedMovies(): Promise<any>{
-    let likedMovies: Movie[] = []; 
+    let likedMovies: any[] = []; 
     console.log(this.loggedInUser.value?.id); 
-    this.loggedInUser.subscribe(value => console.log(value))
-
+    this.loggedInUser.subscribe(value => console.log(value));
     return new Promise((resolve, reject) => { 
       this.http.get<any>(`${this.baseUrl}lists/user/likedlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true})
       .subscribe((data => {
         console.log(data); 
         if(data &&  data.length!=0){
           for(let movie of data){  
-              let selected = this.tmdb.getMovieById(movie.movieID);      
-              selected.subscribe(details => {
-                likedMovies.push(this.tmdb.dataToMovie(details));  
-              }) 
+            likedMovies.push(movie); 
           }
           return resolve(likedMovies); 
         } else {         
@@ -106,17 +104,13 @@ export class ApiService {
 
   getWatchList(): Promise<any>{
     let watchList: Movie[] = []; 
-    //  this.loggedInUser.subscribe(console.log);
     this.loggedInUser.subscribe(value => console.log(value))
     return new Promise((resolve, reject) => {
       this.http.get<any>(`${this.baseUrl}lists/user/watchlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true})
       .subscribe((data => { 
-        if(data.length!=0){
+        if(data && data.length!=0){
           for(let movie of data){  
-            let selected = this.tmdb.getMovieById(movie.movieID);      
-            selected.subscribe(details =>{
-              watchList.push(this.tmdb.dataToMovie(details));
-            }) 
+              watchList.push(movie);  
           }
           return resolve(watchList); 
         } else {         
@@ -125,6 +119,22 @@ export class ApiService {
         
       }))
     }) 
+  }
+
+  removeFromLikedList(movieID: number): Promise<any>{
+    console.log(this.loggedInUser.value?.id); 
+    return new Promise((resolve, reject) =>{
+      // this.http.post<any>(`${this.baseUrl}lists/removelike?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials: true})
+      // .subscribe((data => {
+      //   if(!data){
+      //     return resolve("Deleted"); 
+      //   } else {
+      //     return reject("Something went wrong!"); 
+      //   }
+      // }))
+      console.log("In here")
+      return resolve("Working"); 
+    })
   }
 
   

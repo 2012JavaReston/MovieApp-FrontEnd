@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/interfaces/Movie';
 import { ApiService } from 'src/app/services/api.service';
+import { TmdbService } from 'src/app/services/tmdb.service';
 
 @Component({
   selector: 'app-watch',
@@ -9,17 +10,28 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class WatchComponent implements OnInit {
 
-  watchList: Movie[] =[]; 
+  watchListDetails: any[] = []; 
+  watchList: Movie[] = []; 
   
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private tmdb: TmdbService) { }
 
   ngOnInit(): void {
     this.api.getWatchList()
     .then(
       data =>{
-        this.watchList = data;  
+        this.watchListDetails = data;  
       }
-    ).catch(error =>{
+    ).then(
+      () =>{
+        for(let movie of this.watchListDetails){
+          let selected = this.tmdb.getMovieById(movie.movieID); 
+          selected.subscribe(details =>{
+            this.watchList.push(this.tmdb.dataToMovie(details)); 
+          })
+        }
+      }
+    )
+    .catch(error =>{
       console.log(error); 
     })
   }
