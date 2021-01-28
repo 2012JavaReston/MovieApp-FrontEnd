@@ -3,7 +3,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
+import { Movie } from '../interfaces/Movie'; 
+
+import { MovieInfoComponent } from '../pages/movie-info/movie-info.component';
 import { Comment } from '../interfaces/Comment';
+
 
 @Injectable({
   providedIn: 'root',
@@ -15,15 +19,15 @@ export class ApiService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-
   loginUser(user: User): Promise<string>{
     return new Promise((resolve, reject) =>{
-      this.http.post<User>(`${this.baseUrl}user/login`, user).subscribe(data => {
+      this.http.post<User>(`${this.baseUrl}user/login`, user, {withCredentials: true}).subscribe(data => {
         if(data != null && data.firstName != null){ 
           let userStore = JSON.stringify(data); 
           localStorage.setItem("user", userStore); 
           this.loggedInUser.next(data); 
-          this.router.navigate(['home']);  
+          this.router.navigate(['home']); 
+          console.log(this.loggedInUser);   
           return resolve("Succesfully Logged In")  
         } else {
           return reject("Username or Password is incorrect");
@@ -53,8 +57,8 @@ export class ApiService {
 
   logout(){
     console.log("Clicking this");
-    this.loggedInUser.next(null); 
     localStorage.clear(); 
+    this.loggedInUser = new BehaviorSubject<User | null >(null); 
     
   }
 
@@ -76,6 +80,25 @@ export class ApiService {
 
   }
 
+  getLikedMovies(): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}lists/user/likedlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true});
+  }
+
+
+  getWatchList(): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}lists/user/watchlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true})
+  }
+
+
+  removeFromLikedList(movieID: number): Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}lists/removelike?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials: true})
+  }
+
+  removeFromWatchList(movieID: number): Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}lists/removewatch?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials: true})
+  }
+  
+  
   getCommentsByMovieId(id: number) : Observable<Comment[]>{
     return this.http.get<Comment[]>(`${this.baseUrl}comment/movieID/?movieID=${id}`);
   }
@@ -87,6 +110,7 @@ export class ApiService {
   deleteCommentById(id: number){
     return this.http.delete(`${this.baseUrl}comment/delete/?id=${id}`);
   }
+
 }
 
 
