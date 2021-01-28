@@ -49,7 +49,7 @@ import { WatchComponent } from './pages/watch/watch.component';
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
   ],
-  providers: [],
+  providers: [ HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
