@@ -7,7 +7,7 @@
     <div *ngIf="!movies.length && !isSearching" class="no-movies">There are no movies that matched your search.</div>
     <div *ngIf="movies" class="movies-container">
         <div *ngFor="let movie of movies" class="movie-card">
-            <app-movie-search-card routerLink="/movieInfo/movie.id" [movie]="movie"></app-movie-search-card>
+            <app-movie-search-card routerLink="/movieInfo/{{movie.id}}" [movie]="movie"></app-movie-search-card>
         </div>
     </div>
 </div>

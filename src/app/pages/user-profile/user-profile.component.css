@@ -25,7 +25,6 @@
 .liked-movies {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
     padding: 0 42px;
     width: 100%;
 }
@@ -41,7 +40,5 @@
 }
 .view-more {
     font-size: 24px;
-    display: block;
-    /* width: 100%; */
     margin: 10px 0 10px 20px;
 }

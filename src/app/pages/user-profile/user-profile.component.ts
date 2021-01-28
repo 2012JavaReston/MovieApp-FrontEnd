@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { Movie } from '../../interfaces/Movie';
 import { ApiService } from '../../services/api.service';
-import { TmdbService } from '../../services/tmdb.service'; //! remove after testing
+import { TmdbService } from '../../services/tmdb.service'; 
 
 @Component({
   selector: 'app-user-profile',
@@ -10,30 +10,31 @@ import { TmdbService } from '../../services/tmdb.service'; //! remove after test
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  //TODO: likedMovies!: Movie[];
   user!: User | null;
-  likedMovies: Movie[] = []; //! remove after testing
+  likedMovies: Movie[] = [];
 
   constructor(
     private apiService: ApiService,
-    private tmdbService: TmdbService, //! remove after testing
+    private tmdbService: TmdbService,
   ) { }
 
   ngOnInit(): void {
     this.user = this.apiService.getCurrentUser();
-    //TODO: likedMovies = this.apiService.getLikedMovies();
-    this.getMovies() //! remove after testing
-  }
+    this.apiService.getLikedMovies().subscribe(
+      data => {
+        console.log(`DATA: ${JSON.stringify(data)}`)
+        data.forEach((element: any) => {
+          let id: number = element["movieID"];
+          this.tmdbService.getMovieById(id).subscribe(
+            movie => {
+              let addMovie: Movie = this.tmdbService.dataToMovie(movie);
+              this.likedMovies.push(addMovie);
+            }
+          )
+        });
+        
 
-  //! REMOVE THIS FUNCTION getMovies()
-  //! ONLY HERE TO TEST THE DESIGN
-  getMovies() {
-    this.likedMovies = [];
-    this.tmdbService.getMovies("Nemo").subscribe(
-      (data) => {
-        this.likedMovies = this.tmdbService.dataToMovieArray(data);
       }
-    );
-
+    )
   }
 }
