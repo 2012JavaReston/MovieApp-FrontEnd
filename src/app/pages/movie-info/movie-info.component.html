@@ -1,8 +1,8 @@
 <div class="movie-info-container">
     <div class="title-container">
         <h1>{{movie.title}}</h1>
-        <button (click)="likeMovie()">Add Like List</button>
-        <button (click)="watchMovie()">Add Watch List</button>
+        <button class="btn btn-light" (click)="likeMovie()"><i class="fas fa-plus"></i> Like List</button>
+        <button class="btn btn-light" (click)="watchMovie()"><i class="fas fa-plus"></i> Watch List</button>
     </div>
     
     <img [src]="movie.image" [alt]="movie.title">
