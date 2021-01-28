@@ -23,8 +23,14 @@ export class MovieInfoComponent implements OnInit {
       (params) => {
         this.id = params['id'];
     });
-    this.movie = this.tmdbService.getMovieById(this.id);
-    this.refreshComponent();
+    this.tmdbService.getMovieById(this.id).subscribe(
+      (data) => {
+        console.log(data);
+        this.movie = this.tmdbService.dataToMovie(data);
+        this.refreshComponent();
+      }
+    );
+    
   }
 
   addComment(){
@@ -52,7 +58,7 @@ export class MovieInfoComponent implements OnInit {
       (data) => {
         this.comments = data;
       }
-    );
+    )
   }
 
 }

@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -16,6 +18,7 @@ import { LikedComponent } from './pages/liked/liked.component';
 import { MovieSearchCardComponent } from './components/movie-search-card/movie-search-card.component';
 import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 import { CommentEntryComponent } from './components/comment-entry/comment-entry.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +34,16 @@ import { CommentEntryComponent } from './components/comment-entry/comment-entry.
     LikedComponent,
     MovieSearchCardComponent,
     MovieInfoComponent,
-    CommentEntryComponent
+    CommentEntryComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
