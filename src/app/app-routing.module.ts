@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'search/:movie', component: SearchComponent },
   { path: 'liked', component: LikedComponent, canActivate: [LoggedInGuard]},
   { path: 'movieInfo/:id', component: MovieInfoComponent},
-  { path: 'profile', component: UserProfileComponent},
+  { path: 'profile', component: UserProfileComponent, canActivate: [LoggedInGuard]},
 ];
 
 @NgModule({

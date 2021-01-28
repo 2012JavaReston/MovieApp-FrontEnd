@@ -10,9 +10,8 @@ import { TmdbService } from '../../services/tmdb.service'; //! remove after test
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  //TODO: user!: User;
   //TODO: likedMovies!: Movie[];
-  user: User = new User(0, "jeff", "password", "first-name", "last-name"); //! remove after testing
+  user!: User | null;
   likedMovies: Movie[] = []; //! remove after testing
 
   constructor(
@@ -21,7 +20,7 @@ export class UserProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //TODO: user = this.apiService.getCurrentUser();
+    this.user = this.apiService.getCurrentUser();
     //TODO: likedMovies = this.apiService.getLikedMovies();
     this.getMovies() //! remove after testing
   }

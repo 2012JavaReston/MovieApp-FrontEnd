@@ -80,7 +80,7 @@ export class ApiService {
   private setCurrentUser(data: User) {
     this.currentUser = data;
   }
-  public getCurrentUser(): User {
+  public getCurrentUser(): User | null {
     return this.currentUser;
   }
   private removeCurrentUser() {
