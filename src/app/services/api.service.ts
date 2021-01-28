@@ -81,11 +81,11 @@ export class ApiService {
   }
 
   addCommentByMovieId(entry: Comment){
-    this.http.post<Comment>(`${this.baseUrl}comment/insert`, entry).toPromise();
+    return this.http.post<Comment>(`${this.baseUrl}comment/insert`, entry);
   }
 
   deleteCommentById(id: number){
-    this.http.delete(`${this.baseUrl}comment/delete/?id=${id}`).toPromise();
+    return this.http.delete(`${this.baseUrl}comment/delete/?id=${id}`);
   }
 }
 

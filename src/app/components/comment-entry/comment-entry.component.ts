@@ -8,11 +8,13 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class CommentEntryComponent implements OnInit {
   @Input()
-  userName!: string;
+  userName!: any;
   @Input()
   commentText!: string;
   @Input()
   id!: number;
+  @Input()
+  refresh: any;
 
   editable: boolean = false;
 
@@ -28,7 +30,11 @@ export class CommentEntryComponent implements OnInit {
   }
 
   deleteComment(){
-    this.apiService.deleteCommentById(this.id);
+    this.apiService.deleteCommentById(this.id).subscribe(
+      (data)=>{
+        this.refresh();
+      }
+    );
   }
 
   updateComment(){

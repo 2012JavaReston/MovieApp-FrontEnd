@@ -24,11 +24,7 @@ export class MovieInfoComponent implements OnInit {
         this.id = params['id'];
     });
     this.movie = this.tmdbService.getMovieById(this.id);
-    this.apiService.getCommentsByMovieId(this.id).subscribe(
-      (data) => {
-        this.comments = data;
-      }
-    );
+    this.refreshComponent();
   }
 
   addComment(){
@@ -43,8 +39,20 @@ export class MovieInfoComponent implements OnInit {
       movieID: this.id,
       userID: user
     }
-    this.apiService.addCommentByMovieId(entry);
+    this.apiService.addCommentByMovieId(entry).subscribe(
+      (data) => {
+        this.refreshComponent();
+      }
+    );
     this.commentContent = "";
+  }
+
+  refreshComponent(){
+    this.apiService.getCommentsByMovieId(this.id).subscribe(
+      (data) => {
+        this.comments = data;
+      }
+    );
   }
 
 }
