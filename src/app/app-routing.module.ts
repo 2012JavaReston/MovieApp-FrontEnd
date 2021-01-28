@@ -15,11 +15,11 @@ const routes: Routes = [
   {path: '', component: LandingComponent},
   { path: 'login', component: LoginComponent}, 
   { path: 'register', component: RegisterComponent},
-  { path: 'home', component: HomeComponent },
-  { path: 'search', component: SearchComponent },
-  { path: 'search/:movie', component: SearchComponent },
+  { path: 'home', component: HomeComponent, canActivate: [LoggedInGuard] },
+  { path: 'search', component: SearchComponent, canActivate: [LoggedInGuard] },
+  { path: 'search/:movie', component: SearchComponent, canActivate: [LoggedInGuard] },
   { path: 'liked', component: LikedComponent, canActivate: [LoggedInGuard]},
-  { path: 'movieInfo/:id', component: MovieInfoComponent},
+  { path: 'movieInfo/:id', component: MovieInfoComponent, canActivate: [LoggedInGuard]},
   { path: 'profile', component: UserProfileComponent, canActivate: [LoggedInGuard]},
   { path: 'watch', component: WatchComponent, canActivate: [LoggedInGuard]}
 

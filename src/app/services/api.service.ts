@@ -29,8 +29,7 @@ export class ApiService {
           localStorage.setItem("user", userStore); 
           this.setCurrentUser(data);
           this.loggedInUser.next(data); 
-          this.router.navigate(['home']); 
-          console.log(this.loggedInUser);   
+          this.router.navigate(['home']);   
           return resolve("Succesfully Logged In")  
         } else {
           return reject("Username or Password is incorrect");
@@ -112,15 +111,15 @@ export class ApiService {
   
   
   getCommentsByMovieId(id: number) : Observable<Comment[]>{
-    return this.http.get<Comment[]>(`${this.baseUrl}comment/movieID/?movieID=${id}`);
+    return this.http.get<Comment[]>(`${this.baseUrl}comment/movieID/?movieID=${id}`, {withCredentials: true});
   }
 
   addCommentByMovieId(entry: Comment){
-    return this.http.post<Comment>(`${this.baseUrl}comment/insert`, entry);
+    return this.http.post<Comment>(`${this.baseUrl}comment/insert`, entry, {withCredentials: true});
   }
 
   deleteCommentById(id: number){
-    return this.http.delete(`${this.baseUrl}comment/delete/?id=${id}`);
+    return this.http.delete(`${this.baseUrl}comment/delete/?id=${id}`, {withCredentials: true});
   }
 
 }
