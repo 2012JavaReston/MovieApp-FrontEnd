@@ -5,13 +5,14 @@ import { BehaviorSubject } from 'rxjs';
 import { User } from '../interfaces/user';
 import { Movie } from '../interfaces/Movie'; 
 import { TmdbService } from './tmdb.service';
+import { MovieInfoComponent } from '../pages/movie-info/movie-info.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  // private baseUrl = 'http://localhost:8080/MovieApp/api/';
-  private baseUrl = 'http://ec2-18-216-66-77.us-east-2.compute.amazonaws.com:8090/MovieApp/api/';
+  private baseUrl = 'http://localhost:8080/MovieApp/api/';
+  // private baseUrl = 'http://ec2-18-216-66-77.us-east-2.compute.amazonaws.com:8090/MovieApp/api/';
   private loggedInUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
   constructor(private http: HttpClient, private router: Router, private tmdb: TmdbService) {}
@@ -89,8 +90,10 @@ export class ApiService {
         console.log(data); 
         if(data &&  data.length!=0){
           for(let movie of data){  
-              let selected = this.tmdb.getMovieById(movie.movieID);                    
-              likedMovies.push(selected);  
+              let selected = this.tmdb.getMovieById(movie.movieID);      
+              selected.subscribe(details => {
+                likedMovies.push(this.tmdb.dataToMovie(details));  
+              }) 
           }
           return resolve(likedMovies); 
         } else {         
@@ -107,12 +110,13 @@ export class ApiService {
     this.loggedInUser.subscribe(value => console.log(value))
     return new Promise((resolve, reject) => {
       this.http.get<any>(`${this.baseUrl}lists/user/watchlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true})
-      .subscribe((data => {
-        console.log("hello " + data); 
+      .subscribe((data => { 
         if(data.length!=0){
           for(let movie of data){  
-            console.log(movie); 
-            watchList.push(this.tmdb.getMovieById(movie.movieID)); 
+            let selected = this.tmdb.getMovieById(movie.movieID);      
+            selected.subscribe(details =>{
+              watchList.push(this.tmdb.dataToMovie(details));
+            }) 
           }
           return resolve(watchList); 
         } else {         
