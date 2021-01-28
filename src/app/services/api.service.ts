@@ -23,8 +23,8 @@ export class ApiService {
         if(data != null && data.firstName != null){ 
           let userStore = JSON.stringify(data); 
           localStorage.setItem("user", userStore); 
-          this.loggedInUser.next(data); 
           this.setCurrentUser(data);
+          this.loggedInUser.next(data); 
           this.router.navigate(['home']);  
           return resolve("Succesfully Logged In")  
         } else {
@@ -77,8 +77,11 @@ export class ApiService {
     return message;
 
   }
-  private setCurrentUser(data: any) {
-
+  private setCurrentUser(data: User) {
+    this.currentUser = data;
+  }
+  public getCurrentUser(): User {
+    return this.currentUser;
   }
   private removeCurrentUser() {
     this.currentUser = null;
