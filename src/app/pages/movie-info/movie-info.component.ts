@@ -68,4 +68,12 @@ export class MovieInfoComponent implements OnInit {
       });
   }
 
+  likeMovie(){
+
+  }
+
+  watchMovie(){
+    
+  }
+
 }
