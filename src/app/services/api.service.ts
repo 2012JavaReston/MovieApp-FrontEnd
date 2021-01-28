@@ -29,8 +29,7 @@ export class ApiService {
           localStorage.setItem("user", userStore); 
           this.setCurrentUser(data);
           this.loggedInUser.next(data); 
-          this.router.navigate(['home']); 
-          console.log(this.loggedInUser);   
+          this.router.navigate(['home']);   
           return resolve("Succesfully Logged In")  
         } else {
           return reject("Username or Password is incorrect");
