@@ -6,20 +6,23 @@ import { ApiService } from '../services/api.service';
 @Injectable({
   providedIn: 'root'
 })
-export class LoggedInGuard implements CanActivate {
+export class LoggedInUserGuard implements CanActivate {
 
   constructor(
     private api: ApiService, 
     private router: Router
-  ){}; 
+  ){}
   
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(!this.api.isLoggedIn()){ 
-      this.router.navigate(['']); 
+    if(this.api.isLoggedIn()){
+      this.router.navigate(['/home'])
+      return false; 
+    } else {
+      return true; 
     }
-    return true;
+    
+    
   }
-  
 }
