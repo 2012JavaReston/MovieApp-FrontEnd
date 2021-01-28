@@ -18,6 +18,7 @@ export class LikedComponent implements OnInit {
   
 
     this.api.getLikedMovies().subscribe( details => {
+      
       this.likedMoviesData = details; 
       for(let movie of this.likedMoviesData){
         this.tmdb.getMovieById(movie.movieID).subscribe( details => {
@@ -26,10 +27,6 @@ export class LikedComponent implements OnInit {
         )
       }
     })
-  }
-
-  logout(){
-    this.api.logout(); 
   }
 
   remove(movie: Movie){ 
