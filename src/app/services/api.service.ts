@@ -124,16 +124,15 @@ export class ApiService {
   removeFromLikedList(movieID: number): Promise<any>{
     console.log(this.loggedInUser.value?.id); 
     return new Promise((resolve, reject) =>{
-      // this.http.post<any>(`${this.baseUrl}lists/removelike?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials: true})
-      // .subscribe((data => {
-      //   if(!data){
-      //     return resolve("Deleted"); 
-      //   } else {
-      //     return reject("Something went wrong!"); 
-      //   }
-      // }))
-      console.log("In here")
-      return resolve("Working"); 
+      this.http.post<any>(`${this.baseUrl}lists/removelike?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials: true})
+      .subscribe((data => {
+        if(!data){
+          return resolve("Deleted"); 
+        } else {
+          return reject("Something went wrong!"); 
+        }
+      }))
+      
     })
   }
 

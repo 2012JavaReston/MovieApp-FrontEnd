@@ -35,7 +35,6 @@ export class LikedComponent implements OnInit {
             selected.subscribe(details => {
               let tempArray: Movie[] = [...this.likedMovies, this.tmdb.dataToMovie(details)]; 
               this.api.userLikedList.next(tempArray); 
-              console.log(this.likedMovies); 
               // this.likedMovies.push(this.tmdb.dataToMovie(details)); 
             })
           }
