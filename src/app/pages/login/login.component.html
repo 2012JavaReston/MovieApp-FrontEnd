@@ -16,10 +16,15 @@
         </div>
         <div><span class="error-message" *ngIf="errorMessage">{{errorMessage}}</span></div>
         <div class="text-center">
-          <button type="submit" id="submitButton" class="btn btn-lg">Submit</button>
+          <button type="submit" id="submitButton" class="btn btn-lg" *ngIf="!successful">Submit</button>
+          <button class="btn btn-lg" id="submitButton" *ngIf="successful">
+            <span class="spinner-border spinner-border-md" role=status></span>
+            Logging In.. 
+          </button>
         </div>
       </form>
       <button type="button" id="toRegisterButton" class="btn btn-lg btn-block btn-outline-secondary" routerLink='/register'>
-        Register New User</button>
+        Register New User
+      </button>
     </div>
   </div>
