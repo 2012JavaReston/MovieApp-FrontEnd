@@ -19,18 +19,26 @@ export class MovieInfoComponent implements OnInit {
   constructor(private tmdbService: TmdbService, private route: ActivatedRoute, private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.movie = {
+      id:0,
+      title:"",
+      description:"",
+      image:"",
+      releaseDate: "",
+      genre: "",
+      rating: 0
+    }
     this.route.params.subscribe(
       (params) => {
         this.id = params['id'];
     });
+    
     this.tmdbService.getMovieById(this.id).subscribe(
       (data) => {
-        console.log(data);
         this.movie = this.tmdbService.dataToMovie(data);
         this.refreshComponent();
       }
     );
-    
   }
 
   addComment(){
@@ -54,11 +62,10 @@ export class MovieInfoComponent implements OnInit {
   }
 
   refreshComponent(){
-    this.apiService.getCommentsByMovieId(this.id).subscribe(
+    this.apiService.getCommentsByMovieId(this.movie.id).subscribe(
       (data) => {
         this.comments = data;
-      }
-    )
+      });
   }
 
 }

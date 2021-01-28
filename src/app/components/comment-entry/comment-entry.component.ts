@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -13,8 +13,8 @@ export class CommentEntryComponent implements OnInit {
   commentText!: string;
   @Input()
   id!: number;
-  @Input()
-  refresh: any;
+  @Output()
+  refresh =  new EventEmitter();
 
   editable: boolean = false;
 
@@ -32,7 +32,7 @@ export class CommentEntryComponent implements OnInit {
   deleteComment(){
     this.apiService.deleteCommentById(this.id).subscribe(
       (data)=>{
-        this.refresh();
+        this.refresh.emit();
       }
     );
   }
