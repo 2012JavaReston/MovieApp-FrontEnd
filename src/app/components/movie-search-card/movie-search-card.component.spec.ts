@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule} from '@angular/common/http/testing';
+import {RouterTestingModule} from '@angular/router/testing';
 import { MovieSearchCardComponent } from './movie-search-card.component';
 
 describe('MovieSearchCardComponent', () => {
@@ -8,7 +9,8 @@ describe('MovieSearchCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MovieSearchCardComponent ]
+      imports: [ RouterTestingModule, HttpClientTestingModule],
+      declarations: [ MovieSearchCardComponent ],
     })
     .compileComponents();
   });
@@ -16,10 +18,23 @@ describe('MovieSearchCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MovieSearchCardComponent);
     component = fixture.componentInstance;
+    component.movie = {
+      id: 0,
+      title: "test",
+      description: "test description",
+      image: "string",
+      releaseDate: "11/13/2020",
+      genre: "horror",
+      rating: 0
+    }
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('basic', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('has a title test', () => {
+    expect(component.movie.title).toBe("test");
   });
 });
