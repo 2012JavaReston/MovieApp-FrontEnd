@@ -1,20 +1,20 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule} from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TmdbService } from './tmdb.service';
+import { LoggedInUserGuard } from './logged-in-user.guard';
 
-describe('TmdbService', () => {
-  let service: TmdbService;
+describe('LoggedInUserGuard', () => {
+  let guard: LoggedInUserGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, RouterTestingModule],
-      providers: [ TmdbService]
+      providers: [ LoggedInUserGuard ]
     });
-    service = TestBed.inject(TmdbService);
+    guard = TestBed.inject(LoggedInUserGuard);
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(guard).toBeTruthy();
   });
 });

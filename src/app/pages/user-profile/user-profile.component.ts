@@ -10,7 +10,7 @@ import { TmdbService } from '../../services/tmdb.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  user!: User | null;
+  user: User = new User();
   likedMovies: Movie[] = [];
 
   constructor(
@@ -19,7 +19,7 @@ export class UserProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.user = this.apiService.getCurrentUser();
+    this.user = JSON.parse(localStorage.getItem("user") || '{}');  
     this.apiService.getLikedMovies().subscribe(
       data => {
         console.log(`DATA: ${JSON.stringify(data)}`)
@@ -32,8 +32,6 @@ export class UserProfileComponent implements OnInit {
             }
           )
         });
-        
-
       }
     )
   }
