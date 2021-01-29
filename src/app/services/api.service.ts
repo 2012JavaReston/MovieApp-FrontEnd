@@ -7,7 +7,13 @@ import { Movie } from '../interfaces/Movie';
 
 import { MovieInfoComponent } from '../pages/movie-info/movie-info.component';
 import { Comment } from '../interfaces/Comment';
+import{HttpHeaders} from '@angular/common/http'; 
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+}
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +25,7 @@ export class ApiService {
 
   public currentUser: User | null = null;
 
+ 
   constructor(private http: HttpClient, private router: Router) {}
 
   loginUser(user: User): Promise<string>{
@@ -104,19 +111,19 @@ export class ApiService {
   }
 
   addMovieToLikeList(movieID: number): Observable<any>{
-    return this.http.post<any>(`${this.baseUrl}lists/like?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials:true});
+    return this.http.post<any>(`${this.baseUrl}lists/like?movieID=${movieID}`, httpOptions, {withCredentials:true});
   }
 
   addMovieToWatchList(movieID: number): Observable<any>{
-    return this.http.post<any>(`${this.baseUrl}lists/watch?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials: true});
+    return this.http.post<any>(`${this.baseUrl}lists/watch?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, httpOptions, {withCredentials: true});
   }
 
   removeFromLikedList(movieID: number): Observable<any>{
-    return this.http.post<any>(`${this.baseUrl}lists/removelike?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials: true})
+    return this.http.post<any>(`${this.baseUrl}lists/removelike?movieID=${movieID}`, httpOptions, {withCredentials: true})
   }
 
   removeFromWatchList(movieID: number): Observable<any>{
-    return this.http.post<any>(`${this.baseUrl}lists/removewatch?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials: true})
+    return this.http.post<any>(`${this.baseUrl}lists/removewatch?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, httpOptions, {withCredentials: true})
   }
   
   
