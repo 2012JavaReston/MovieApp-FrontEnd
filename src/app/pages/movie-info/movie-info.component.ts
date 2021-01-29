@@ -56,8 +56,7 @@ export class MovieInfoComponent implements OnInit {
     this.apiService.getListByMovieId(this.id).subscribe(
       (data) => {
         data.forEach((element: any) => {
-          if(element.userID === this.userId){
-            console.log(element);
+          if(element.userID.id === this.userId){
             this.liked = element.movieLike;
             this.watch = element.movieWatchList;
           }
