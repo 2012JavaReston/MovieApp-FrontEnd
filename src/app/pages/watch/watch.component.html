@@ -2,8 +2,12 @@
     <h1>Watch List</h1>
   </header>
   
+  <div class="loader" *ngIf="loadingMovies">
+    <span class="spinner-border spinner-border-md" role=status ></span>
+    <span id="loading-text"> Loading Your Liked Movies!</span>
+  </div>
   
-  <div class="container">
+  <div class="container" *ngIf="!loadingMovies">
     <div class="row">
       <div class="col-md-12" *ngFor="let movie of watchList">
   

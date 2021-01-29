@@ -77,3 +77,12 @@
   .container{
     padding-top: 50px; 
   }
+
+  .loader{
+    text-align: center;
+    
+  }
+
+  #loading-text{
+    font-size: 30px; 
+  }

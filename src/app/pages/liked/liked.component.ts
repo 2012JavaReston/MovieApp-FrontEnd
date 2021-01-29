@@ -12,17 +12,18 @@ export class LikedComponent implements OnInit {
 
   likedMoviesData: any[] = []; 
   likedMovies: Movie[] = []; 
+  loadingMovies: boolean = true; 
   constructor(private api: ApiService, private tmdb: TmdbService) { }
 
   ngOnInit(): void {
   
 
     this.api.getLikedMovies().subscribe( details => {
-      
       this.likedMoviesData = details; 
       for(let movie of this.likedMoviesData){
         this.tmdb.getMovieById(movie.movieID).subscribe( details => {
           this.likedMovies.push(this.tmdb.dataToMovie(details))
+          this.loadingMovies = false; 
         }  
         )
       }
