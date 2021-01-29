@@ -13,7 +13,7 @@ export class WatchComponent implements OnInit {
 
   watchListDetails: any[] = []; 
   watchList: Movie[] = []; 
-  loadingMovies: boolean = true; 
+  // loadingMovies: boolean = true; 
   
   constructor(private api: ApiService, private tmdb: TmdbService) { }
 
@@ -25,7 +25,7 @@ export class WatchComponent implements OnInit {
       for(let movie of this.watchListDetails){
         this.tmdb.getMovieById(movie.movieID).subscribe(details =>{
           this.watchList.push(this.tmdb.dataToMovie(details));  
-          this.loadingMovies = false; 
+          // this.loadingMovies = false; 
         })
       }
     })

@@ -12,7 +12,7 @@ export class LikedComponent implements OnInit {
 
   likedMoviesData: any[] = []; 
   likedMovies: Movie[] = []; 
-  loadingMovies: boolean = true; 
+  // loadingMovies: boolean = true; 
   constructor(private api: ApiService, private tmdb: TmdbService) { }
 
   ngOnInit(): void {
@@ -23,7 +23,7 @@ export class LikedComponent implements OnInit {
       for(let movie of this.likedMoviesData){
         this.tmdb.getMovieById(movie.movieID).subscribe( details => {
           this.likedMovies.push(this.tmdb.dataToMovie(details))
-          this.loadingMovies = false; 
+          // this.loadingMovies = false; 
         }  
         )
       }

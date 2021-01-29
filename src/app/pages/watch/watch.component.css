@@ -1,16 +1,30 @@
+header {
+  text-align: center;
+  padding: 25px 0 50px 0;
+  font-family: var(--primaryFont);
+  color: var(--theBlackColor);
+}
+
+hr {
+  width: 50%;
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px white;
+}
+
 .card-horizontal {
   display: flex;
   flex: 1 1 auto;
 
 }
 
-.card-body{
-  margin-left: auto; 
-  margin-right: auto; 
-  
+.card-body {
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
-.img-square-wrapper{
+.img-square-wrapper {
   max-width: 100%;
   height: auto;
 }
@@ -19,8 +33,8 @@
   background-color: #E8E8E8;
   display: flex;
   margin-bottom: 1em;
-  position: relative; 
-  min-height: 250px; 
+  position: relative;
+  min-height: 250px;
 }
 
 .card-custom-img {
@@ -30,59 +44,68 @@
   border-radius: 5px;
   transform: scale(1);
   transition: 300ms;
-  top: 50%; 
-  position: absolute; 
-  transform: translateY(-50%); 
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
 }
 
 .card-custom-img .cover {
   width: 100%;
   min-width: 200px;
-  height: 300px; 
+  height: 300px;
   object-fit: cover;
-} 
+}
 
 .card-custom-body {
-  background-color:	#E8E8E8;
+  background-color: #E8E8E8;
   padding: 1em;
   padding: 70px 0;
-  margin-left: 200px; 
+  margin-left: 200px;
 }
 
 
-header{
-  text-align: center;
-  padding: 25px 0 50px 0; 
-  font-family: var(--primaryFont);
-  color: var(--theBlackColor); 
-}
 
 
-.info{
+.info {
   min-width: 300px;
-  max-width: 302px; 
+  max-width: 302px;
 }
 
-.title{
+.title {
   font-weight: bold;
   font-family: var(--primaryFont);
 }
 
-.remove-button{
-  position: absolute; 
+.remove-button {
+  position: absolute;
   bottom: 20px;
-  right: 40px; 
+  right: 40px;
 }
 
-.container{
-  padding-top: 50px; 
+.container {
+  padding-top: 50px;
 }
 
-.loader{
-  text-align: center;
-  
+#mainContainer {
+  background-color: var(--secondaryRedColor);
 }
 
-#loading-text{
-  font-size: 30px; 
+#wholeCard {
+  color: var(--primaryWhiteColor);
+  background-color: var(--primaryRedColor);
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px white;
+}
+
+#cardBody {
+  background-color: var(--primaryRedColor);
+  border-radius: 5px;
+}
+
+#headerText {
+  padding-top: 15px;
+  font-family: var(--secondaryFont);
+  color: var(--primaryGoldColor);
+  text-shadow: 0px 0px 5px black;
 }

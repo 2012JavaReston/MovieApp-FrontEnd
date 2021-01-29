@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule} from '@angular/common/http/testing';
+import {RouterTestingModule} from '@angular/router/testing';
 import { LikedComponent } from './liked.component';
 
 describe('LikedComponent', () => {
@@ -8,6 +9,7 @@ describe('LikedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ RouterTestingModule, HttpClientTestingModule],
       declarations: [ LikedComponent ]
     })
     .compileComponents();
