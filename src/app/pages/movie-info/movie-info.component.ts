@@ -15,6 +15,9 @@ export class MovieInfoComponent implements OnInit {
   id!: number;
   comments!: Comment[];
   commentContent: string = "";
+  protected userId!: number;
+  liked : boolean = false;
+  watch : boolean = false;
  
   constructor(private tmdbService: TmdbService, private route: ActivatedRoute, private apiService: ApiService) { }
 
@@ -39,19 +42,38 @@ export class MovieInfoComponent implements OnInit {
         this.refreshComponent();
       }
     );
+
+    let local = localStorage.getItem("user");
+    if(typeof local === 'string'){
+      this.userId = JSON.parse(local).id;
+    }
+
+    this.apiService.getListByMovieId(this.id).subscribe(
+      (data) => {
+        data.forEach((element: any) => {
+          if(element.userID === this.userId){
+            console.log(element);
+            this.liked = element.movieLike;
+            this.watch = element.movieWatchList;
+          }
+        });
+        
+        //console.log(data[0]);
+        // console.log("INSIDE Like: " + this.liked);
+        // console.log("INSIDE Watched: " + this.watch);
+
+      }
+    )
+    // console.log("Like: " + this.liked);
+    // console.log("Watched: " + this.watch);
   }
 
   addComment(){
-    let local = localStorage.getItem("user");
-    let user: number = 0;
-    if(typeof local === 'string'){
-      user = JSON.parse(local).id;
-    }
     let entry: Comment = {
       id : 0,
       comment: this.commentContent,
       movieID: this.id,
-      userID: user
+      userID: this.userId
     }
     this.apiService.addCommentByMovieId(entry).subscribe(
       (data) => {
@@ -69,6 +91,7 @@ export class MovieInfoComponent implements OnInit {
   }
 
   likeMovie(){
+    this.liked = true;
     this.apiService.addMovieToLikeList(this.movie.id).subscribe(
       (data) => {
         console.log("LIKE ME");
@@ -77,9 +100,27 @@ export class MovieInfoComponent implements OnInit {
   }
 
   watchMovie(){
+    this.watch = true;
     this.apiService.addMovieToWatchList(this.movie.id).subscribe(
       (data) => {
         console.log("WATCH ME");
+      }
+    );
+  }
+
+  removeLike(){
+    this.liked = false;
+    this.apiService.removeFromLikedList(this.movie.id).subscribe(
+      (data) => {
+      }
+    )
+  }
+
+  removeWatch(){
+    this.watch = false;
+    this.apiService.removeFromWatchList(this.movie.id).subscribe(
+      (data) => {
+
       }
     )
   }
