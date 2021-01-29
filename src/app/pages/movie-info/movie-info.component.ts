@@ -4,6 +4,7 @@ import { Movie } from 'src/app/interfaces/Movie';
 import { ApiService } from 'src/app/services/api.service';
 import { TmdbService } from 'src/app/services/tmdb.service';
 import { Comment } from 'src/app/interfaces/Comment';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-movie-info',
@@ -18,6 +19,7 @@ export class MovieInfoComponent implements OnInit {
   protected userId!: number;
   liked : boolean = false;
   watch : boolean = false;
+  
  
   constructor(private tmdbService: TmdbService, private route: ActivatedRoute, private apiService: ApiService) { }
 
@@ -73,7 +75,8 @@ export class MovieInfoComponent implements OnInit {
       id : 0,
       comment: this.commentContent,
       movieID: this.id,
-      userID: this.userId
+      user: new User(this.userId)
+
     }
     this.apiService.addCommentByMovieId(entry).subscribe(
       (data) => {
