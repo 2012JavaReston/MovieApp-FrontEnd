@@ -13,6 +13,7 @@ describe('MovieInfoComponent', () => {
       declarations: [ MovieInfoComponent ]
     })
     .compileComponents();
+
   });
 
   beforeEach(() => {

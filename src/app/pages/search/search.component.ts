@@ -7,10 +7,10 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
-  searchMovie: string = "";
+  searchMovie: string = '';
   movies: Movie[] = [];
   private sub: any;
   isSearching: boolean = false;
@@ -18,12 +18,12 @@ export class SearchComponent implements OnInit {
     private route: ActivatedRoute,
     private tmdbService: TmdbService,
     private location: Location
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+    this.sub = this.route.params.subscribe((params) => {
       this.searchMovie = params['movie'];
-      if(this.searchMovie){
+      if (this.searchMovie) {
         this.getMovies();
       }
     });
@@ -37,14 +37,10 @@ export class SearchComponent implements OnInit {
     this.location.go(`search/${this.searchMovie}`);
     this.movies = [];
     this.isSearching = true;
-    this.tmdbService.getMovies(this.searchMovie).subscribe(
-      (data) => {
-        this.movies = this.tmdbService.dataToMovieArray(data);
-        this.isSearching = false;
-        console.log(this.movies)
-      }
-    );
-
+    this.tmdbService.getMovies(this.searchMovie).subscribe((data) => {
+      this.movies = this.tmdbService.dataToMovieArray(data);
+      this.isSearching = false;
+      console.log(this.movies);
+    });
   }
-
 }
