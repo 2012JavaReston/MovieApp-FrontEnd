@@ -6,7 +6,7 @@ import { TmdbService } from 'src/app/services/tmdb.service';
 @Component({
   selector: 'app-liked',
   templateUrl: './liked.component.html',
-  styleUrls: ['./liked.component.css']
+  styleUrls: ['./liked.component.css'],
 })
 export class LikedComponent implements OnInit {
 
@@ -27,13 +27,14 @@ export class LikedComponent implements OnInit {
         }  
         )
       }
-    })
+    });
   }
 
-  remove(movie: Movie){ 
+  remove(movie: Movie) {
     this.api.removeFromLikedList(movie.id).subscribe(() => {
-      this.likedMovies = this.likedMovies.filter(selected => selected != movie); 
-    })
+      this.likedMovies = this.likedMovies.filter(
+        (selected) => selected != movie
+      );
+    });
   }
-
 }

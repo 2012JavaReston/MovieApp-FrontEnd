@@ -4,22 +4,17 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.css']
+  styleUrls: ['./landing.component.css'],
 })
 export class LandingComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  showRegister: boolean = false;
 
-
-  showRegister: boolean = false; 
-  
-
-  toggleRegister(): void{
-    this.showRegister = !this.showRegister; 
-    console.log(this.showRegister); 
+  toggleRegister(): void {
+    this.showRegister = !this.showRegister;
+    console.log(this.showRegister);
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

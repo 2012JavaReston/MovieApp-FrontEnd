@@ -1,4 +1,5 @@
 <div class="movie-info-container">
+
     <div class="title-container">
         <h1>{{movie.title}}</h1>
         <button [class]="liked ? 'btn btn-dark' : 'btn btn-light'" (click)="liked ? removeLike() : likeMovie()">{{liked ? 'Liked' : 'Like'}}</button>

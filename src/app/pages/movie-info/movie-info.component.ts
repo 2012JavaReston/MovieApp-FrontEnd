@@ -9,12 +9,14 @@ import { User } from 'src/app/interfaces/user';
 @Component({
   selector: 'app-movie-info',
   templateUrl: './movie-info.component.html',
-  styleUrls: ['./movie-info.component.css']
+  styleUrls: ['./movie-info.component.css'],
 })
 export class MovieInfoComponent implements OnInit {
   movie!: Movie;
   id!: number;
   comments!: Comment[];
+
+
   commentContent: string = "";
   protected userId!: number;
   liked : boolean = false;
@@ -23,19 +25,19 @@ export class MovieInfoComponent implements OnInit {
  
   constructor(private tmdbService: TmdbService, private route: ActivatedRoute, private apiService: ApiService) { }
 
+
   ngOnInit(): void {
     this.movie = {
-      id:0,
-      title:"",
-      description:"",
-      image:"",
-      releaseDate: "",
-      genre: "",
-      rating: 0
-    }
-    this.route.params.subscribe(
-      (params) => {
-        this.id = params['id'];
+      id: 0,
+      title: '',
+      description: '',
+      image: '',
+      releaseDate: '',
+      genre: '',
+      rating: 0,
+    };
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
     });
     
     this.tmdbService.getMovieById(this.id).subscribe(
@@ -48,6 +50,7 @@ export class MovieInfoComponent implements OnInit {
     let local = localStorage.getItem("user");
     if(typeof local === 'string'){
       this.userId = JSON.parse(local).id;
+
     }
 
     this.apiService.getListByMovieId(this.id).subscribe(
@@ -72,7 +75,7 @@ export class MovieInfoComponent implements OnInit {
 
   addComment(){
     let entry: Comment = {
-      id : 0,
+      id: 0,
       comment: this.commentContent,
       movieID: this.id,
       user: new User(this.userId)
