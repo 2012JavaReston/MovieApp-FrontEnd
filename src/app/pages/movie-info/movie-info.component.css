@@ -1,7 +1,9 @@
-.genre-container {
-  display: flex;
-  flex-wrap: wrap;
-}
+/**
+
+CLASS DEFINITIONS
+
+*/
+.genre-container {}
 
 .genre-container span {
   background-color: black;
@@ -9,4 +11,36 @@
   border-radius: 5px;
   padding: 3px 10px;
   margin: 5px;
+}
+
+.movie-info-container {
+  background-color: var(--secondaryRedColor);
+  text-align: center;
+}
+
+
+/**
+
+ID DEFINITIONS
+
+*/
+
+#genreInfo {
+  font-family: var(--thirdFont);
+}
+
+#detailsInfo {
+  font-family: var(--thirdFont);
+
+}
+
+#infoRow {
+  background-color: var(--primaryWhiteColor);
+}
+
+#titleText {
+  font-family: var(--secondaryFont);
+  color: black;
+  -webkit-text-stroke: 1px var(--primaryGoldColor);
+  letter-spacing: 9px;
 }
