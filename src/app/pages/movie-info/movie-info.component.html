@@ -1,8 +1,8 @@
 <div class="movie-info-container">
     <div class="title-container">
         <h1>{{movie.title}}</h1>
-        <button class="btn btn-light" (click)="likeMovie()"><i class="fas fa-plus"></i> Like List</button>
-        <button class="btn btn-light" (click)="watchMovie()"><i class="fas fa-plus"></i> Watch List</button>
+        <button [class]="liked ? 'btn btn-dark' : 'btn btn-light'" (click)="liked ? removeLike() : likeMovie()">{{liked ? 'Liked' : 'Like'}}</button>
+        <button [class]="liked ? 'btn btn-dark' : 'btn btn-light'" (click)="watch ? removeWatch() : watchMovie()">{{watch ? 'Added' : 'Watch Later'}}</button>
     </div>
     
     <img [src]="movie.image" [alt]="movie.title">
@@ -12,7 +12,7 @@
     <p>Rating: {{movie.rating}}</p>
     <p>Release Date: {{movie.releaseDate}}</p>
     <p>Overview: {{movie.description}}</p>
-    <textarea [(ngModel)]="commentContent" placeholder="Comment here"></textarea>
+    <textarea [(ngModel)]="commentContent" placeholder="Comments here"></textarea>
     <button class="btn btn-primary" (click)="addComment()">Submit</button>
     <div *ngIf="comments" class="comment-container">
         <app-comment-entry (refresh)="refreshComponent()" *ngFor="let entry of comments" [id]="entry.id" [userName]="entry.userID" [commentText]="entry.comment"></app-comment-entry>

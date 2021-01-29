@@ -91,15 +91,25 @@ export class ApiService {
     this.currentUser = null;
   }
 
+  getListByMovieId(movieId: number) : Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}lists/movieID?movieID=${movieId}`, {withCredentials: true});
+  }
+
   getLikedMovies(): Observable<any>{
     return this.http.get<any>(`${this.baseUrl}lists/user/likedlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true});
   }
-
 
   getWatchList(): Observable<any>{
     return this.http.get<any>(`${this.baseUrl}lists/user/watchlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true})
   }
 
+  addMovieToLikeList(movieID: number): Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}lists/like?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials:true});
+  }
+
+  addMovieToWatchList(movieID: number): Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}lists/watch?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials: true});
+  }
 
   removeFromLikedList(movieID: number): Observable<any>{
     return this.http.post<any>(`${this.baseUrl}lists/removelike?userID=${this.loggedInUser.value?.id}&movieID=${movieID}`, {withCredentials: true})
