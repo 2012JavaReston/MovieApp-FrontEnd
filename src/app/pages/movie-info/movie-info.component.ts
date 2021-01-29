@@ -62,15 +62,9 @@ export class MovieInfoComponent implements OnInit {
             this.watch = element.movieWatchList;
           }
         });
-        
-        //console.log(data[0]);
-        // console.log("INSIDE Like: " + this.liked);
-        // console.log("INSIDE Watched: " + this.watch);
 
       }
     )
-    // console.log("Like: " + this.liked);
-    // console.log("Watched: " + this.watch);
   }
 
   addComment(){
