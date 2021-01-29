@@ -14,16 +14,21 @@ export class LoginComponent implements OnInit {
   password: string= ""; 
   errorMessage: string =""; 
   loginUser = new User(); 
-  successful = false; 
+  successful:boolean = false; 
 
   onSubmit(): void{
     this.loginUser.username = this.username; 
     this.loginUser.password = this.password; 
+    this.successful = true; 
 
     this.apiService.loginUser(this.loginUser)
-    .then()
+    .then(() =>{
+        this.successful = false; 
+      } 
+    )
     .catch(err =>{
       this.errorMessage = err; 
+      this.successful = false; 
     })  
   }
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LoggedInUserGuard } from './guards/logged-in-user.guard';
 import { LoggedInGuard } from './guards/logged-in.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { LandingComponent } from './pages/landing/landing.component';
@@ -12,9 +13,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { WatchComponent } from './pages/watch/watch.component';
 
 const routes: Routes = [
-  {path: '', component: LandingComponent},
-  { path: 'login', component: LoginComponent}, 
-  { path: 'register', component: RegisterComponent},
+  { path: '', component: LandingComponent },
+  { path: 'login', component: LoginComponent, canActivate: [LoggedInUserGuard]}, 
+  { path: 'register', component: RegisterComponent, canActivate: [LoggedInUserGuard]},
   { path: 'home', component: HomeComponent, canActivate: [LoggedInGuard] },
   { path: 'search', component: SearchComponent, canActivate: [LoggedInGuard] },
   { path: 'search/:movie', component: SearchComponent, canActivate: [LoggedInGuard] },
