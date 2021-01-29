@@ -1,8 +1,8 @@
 <div class="movie-info-container">
     <div class="title-container">
         <h1>{{movie.title}}</h1>
-        <button class="btn btn-light" (click)="liked ? removeLike() : likeMovie()">{{liked ? 'Liked' : 'Like'}}</button>
-        <button class="btn btn-light" (click)="watch ? removeWatch() : watchMovie()">{{watch ? 'Added' : 'Watch Later'}}</button>
+        <button [class]="liked ? 'btn btn-dark' : 'btn btn-light'" (click)="liked ? removeLike() : likeMovie()">{{liked ? 'Liked' : 'Like'}}</button>
+        <button [class]="liked ? 'btn btn-dark' : 'btn btn-light'" (click)="watch ? removeWatch() : watchMovie()">{{watch ? 'Added' : 'Watch Later'}}</button>
     </div>
     
     <img [src]="movie.image" [alt]="movie.title">
