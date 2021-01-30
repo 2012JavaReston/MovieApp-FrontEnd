@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { ApiService } from 'src/app/services/api.service';
 import {Router} from '@angular/router'
+import{BehaviorSubject} from 'rxjs'; 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -9,14 +10,17 @@ import {Router} from '@angular/router'
 })
 export class NavbarComponent implements OnInit {
 
-  user: User = new User(); 
+  username: any = "";
+  user: BehaviorSubject<User | null> = this.api.loggedInUser; 
   constructor(
     private api: ApiService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.user = JSON.parse(localStorage.getItem("user") || '{}') 
+    this.user.subscribe(data => {
+      this.username = data?.username; 
+    })
   }
 
 
@@ -24,6 +28,8 @@ export class NavbarComponent implements OnInit {
   loggedIn(): boolean{
     return this.api.isLoggedIn();
   }
+
+  
 
 
 }

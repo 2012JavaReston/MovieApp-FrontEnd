@@ -21,7 +21,7 @@ const httpOptions = {
 export class ApiService {
   private baseUrl = 'http://localhost:8080/MovieApp/api/';
   // private baseUrl = 'http://ec2-18-216-66-77.us-east-2.compute.amazonaws.com:8090/MovieApp/api/';
-  private loggedInUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
+  public loggedInUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
   public currentUser: User | null = null;
 
@@ -68,7 +68,7 @@ export class ApiService {
     console.log("Clicking this");
     localStorage.clear(); 
     this.removeCurrentUser();
-    this.loggedInUser = new BehaviorSubject<User | null >(null); 
+    this.loggedInUser.next(null);  
   }
 
   registerNewUser(newUser: User) {
