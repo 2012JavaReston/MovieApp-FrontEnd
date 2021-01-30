@@ -3,6 +3,7 @@
   box-sizing: border-box;
   font-family: var(--primaryFont);
   color: var(--theBlackColor);
+  background-color: black
 }
 
 /* 
@@ -60,6 +61,21 @@
 
 .search-button:hover {
   background-image: linear-gradient(#d8d8d8, #e6d1a4);
+}
+
+.jumbotron {
+  font-family: var(--secondaryFont);
+  color: black;
+  background-color: black;
+  -webkit-text-stroke: 1px var(--primaryGoldColor);
+  text-shadow: 0px 0px 15px var(--secondaryGoldColor);
+}
+
+#randomButton {
+  -webkit-text-stroke: 1px black;
+  letter-spacing: 3px;
+  background-color: var(--primaryGoldColor);
+  border: 1px solid black;
 }
 
 /* 

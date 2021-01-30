@@ -23,21 +23,20 @@ export class HomeComponent implements OnInit {
   }
 
   generateRandomMovie(): void {
-    let movieId = Math.floor(Math.random() * 1000000);  //range from 0-999999
+    let movieId = Math.floor(Math.random() * 1000000); //range from 0-999999
     this.tmdb.getMovieById(movieId).subscribe(
-      (data:any) => {
-        if(data && !data.adult && data.poster_path){
+      (data: any) => {
+        if (data && !data.adult && data.poster_path) {
           this.router.navigate([`movieInfo/${movieId}`]);
-        }else{
+        } else {
           //If movie is adult or lacks an image, search again!
           this.generateRandomMovie();
         }
-      }, error => {
+      },
+      (error) => {
         //If id is invalid, search again!
         this.generateRandomMovie();
       }
-    )
-    
+    );
   }
-
 }

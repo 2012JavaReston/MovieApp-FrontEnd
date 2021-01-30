@@ -2,18 +2,21 @@
 
   <div class="title-container">
     <h1 class="display-1" id="titleText">{{movie.title}}</h1>
+    <hr>
   </div>
 
-  <img [src]="movie.image" [alt]="movie.title">
+  <img [src]="movie.image" [alt]="movie.title" id="movieImage">
   <div class="row" id="infoRow">
     <div class="col-sm-4" id="genreInfo">
       <div class="genre-container">
         <h2><b>Genre(s):</b></h2>
         <h4><span *ngFor="let genre of movie.genre">{{genre.name}}</span></h4>
-        <button [class]="liked ? 'btn btn-dark' : 'btn btn-light'"
-          (click)="liked ? removeLike() : likeMovie()">{{liked ? 'Liked' : 'Like'}}</button>
-        <button [class]="watch ? 'btn btn-dark' : 'btn btn-light'"
-          (click)="watch ? removeWatch() : watchMovie()">{{watch ? 'Added' : 'Watch Later'}}</button>
+        <div class="container" id="buttonContainer">
+          <button id="likedButton" [class]="liked ? 'btn btn-dark' : 'btn btn-light'"
+            (click)="liked ? removeLike() : likeMovie()">{{liked ? 'Liked' : 'Like'}}</button>
+          <button id="watchButton" [class]="watch ? 'btn btn-dark' : 'btn btn-light'"
+            (click)="watch ? removeWatch() : watchMovie()">{{watch ? 'Added' : 'Watch Later'}}</button>
+        </div>
       </div>
     </div>
     <div class="col-sm-8" id="detailsInfo">
@@ -26,13 +29,13 @@
     </div>
   </div>
 
-  <div class="container">
-      <h2>Comments</h2>
-    <textarea [(ngModel)]="commentContent" placeholder="Comments here"></textarea>
-    <button class="btn btn-primary" (click)="addComment()">Submit</button>
+  <div class="container" id="commentsContainer">
+    <h2>Comments</h2>
+    <app-comment-entry (refresh)="refreshComponent()" *ngFor="let entry of comments" [commentId]="entry.id"
+      [userId]="entry.user.id" [userName]="entry.user.username" [commentText]="entry.comment"></app-comment-entry>
+    <textarea class="form-control" rows="2" [(ngModel)]="commentContent" placeholder="Comments here"></textarea>
     <div *ngIf="comments" class="comment-container">
-
-        <app-comment-entry (refresh)="refreshComponent()" *ngFor="let entry of comments" [commentId]="entry.id" [userId]="entry.user.id" [userName]="entry.user.username" [commentText]="entry.comment"></app-comment-entry>
     </div>
+    <button class="btn btn-primary btn-block mt-2" id="submit" (click)="addComment()">Submit</button>
   </div>
 </div>
