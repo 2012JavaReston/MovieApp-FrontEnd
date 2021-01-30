@@ -106,9 +106,17 @@ export class ApiService {
     return this.http.get<any>(`${this.baseUrl}lists/user/likedlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true});
   }
 
+
+  getLikeListById(id: number):  Observable<any>{
+    console.log(id); 
+    return this.http.get<any>(`${this.baseUrl}lists/user/likedlist?userID=${id}`, {withCredentials: true});
+  }
+
   getWatchList(): Observable<any>{
     return this.http.get<any>(`${this.baseUrl}lists/user/watchlist?userID=${this.loggedInUser.value?.id}`, {withCredentials: true})
   }
+
+
 
   addMovieToLikeList(movieID: number): Observable<any>{
     return this.http.post<any>(`${this.baseUrl}lists/like?movieID=${movieID}`, httpOptions, {withCredentials:true});
@@ -137,6 +145,10 @@ export class ApiService {
 
   deleteCommentById(id: number){
     return this.http.delete(`${this.baseUrl}comment/delete/?id=${id}`, {withCredentials: true});
+  }
+
+  getUserByUsername(username: string){
+    return this.http.get(`${this.baseUrl}user/?username=${username}`, {withCredentials: true});
   }
 
 }

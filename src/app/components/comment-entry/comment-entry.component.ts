@@ -12,7 +12,9 @@ export class CommentEntryComponent implements OnInit {
   @Input()
   commentText!: string;
   @Input()
-  id!: number;
+  commentId!: number;
+  @Input()
+  userId!: number;
   @Output()
   refresh =  new EventEmitter();
 
@@ -24,13 +26,13 @@ export class CommentEntryComponent implements OnInit {
     let local = localStorage.getItem("user");
     if(typeof local === "string"){
       let user = JSON.parse(local).id;
-      this.editable = this.userName === user;
+      this.editable = this.userId === user;
     }
 
   }
 
   deleteComment(){
-    this.apiService.deleteCommentById(this.id).subscribe(
+    this.apiService.deleteCommentById(this.commentId).subscribe(
       (data)=>{
         this.refresh.emit();
       }

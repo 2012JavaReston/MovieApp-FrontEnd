@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'search/:movie', component: SearchComponent, canActivate: [LoggedInGuard] },
   { path: 'liked', component: LikedComponent, canActivate: [LoggedInGuard]},
   { path: 'movieInfo/:id', component: MovieInfoComponent, canActivate: [LoggedInGuard]},
-  { path: 'profile', component: UserProfileComponent, canActivate: [LoggedInGuard]},
+  { path: 'profile/:username', component: UserProfileComponent, canActivate: [LoggedInGuard]},
   { path: 'watch', component: WatchComponent, canActivate: [LoggedInGuard]}
 
 ];

@@ -22,10 +22,12 @@
         <p class="heading">Liked Movies</p>
         <div class="liked-movies">
             <div class="movie-container" *ngFor="let movie of likedMovies">
-                <img class="movie-image" routerLink="/movieInfo/movie.id" [src]="movie.image" [alt]="movie.title">
+                <img class="movie-image" routerLink="/movieInfo/{{movie.id}}" [src]="movie.image" [alt]="movie.title">
             </div>
         </div>
         <a class="view-more" routerLink="/liked">View More of Your Liked Movies</a>
     </div>
     <button (click)="logout()" routerLink="">Logout</button>
+
+    
 </div>
