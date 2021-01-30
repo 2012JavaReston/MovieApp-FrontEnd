@@ -1,3 +1,11 @@
+hr {
+  width: 50%;
+  border: 2px solid var(--primaryGoldColor);
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px var(--secondaryGoldColor);
+}
+
+
 /**
 
 CLASS DEFINITIONS
@@ -14,10 +22,17 @@ CLASS DEFINITIONS
 }
 
 .movie-info-container {
+  padding-bottom: 15px;
   background-color: var(--secondaryRedColor);
   text-align: center;
 }
 
+.btn-dark {
+  background-color: var(--primaryGoldColor);
+  box-shadow: 0px 0px 10px var(--primaryGoldColor);
+}
+
+.btn-light {}
 
 /**
 
@@ -43,4 +58,31 @@ ID DEFINITIONS
   color: black;
   -webkit-text-stroke: 1px var(--primaryGoldColor);
   letter-spacing: 9px;
+  text-shadow: 0px 0px 15px var(--secondaryGoldColor);
+}
+
+#commentsContainer {
+  color: white;
+  font-family: var(--thirdFont);
+}
+
+#movieImage {
+  padding-bottom: 20px;
+}
+
+#submit {
+  background-color: var(--primaryGoldColor);
+  border: 2px solid black;
+}
+
+#buttonContainer {
+  margin-top: 50px;
+}
+
+#likedButton {
+  margin-right: 25px;
+}
+
+#watchButton {
+  margin-left: 25px;
 }

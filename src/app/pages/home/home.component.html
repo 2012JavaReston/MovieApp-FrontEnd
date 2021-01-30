@@ -5,8 +5,13 @@
       <input [(ngModel)]='search' name='search' class="search-input" type="text" placeholder="Search for a movie..." />
       <button type="submit" class="search-button">Search</button>
     </form>
+    <div class="jumbotron text-center">
+      <h2>OR FIND A RANDOM MOVIE TO WATCH TONIGHT!</h2>
+      <button class="btn btn-primary btn-block" id="randomButton" (click)="generateRandomMovie()">RANDOM</button>
+    </div>
+
   </div>
-  <button (click)="generateRandomMovie()">RANDOM</button>
+
   <div class="movies-container">
     <h1 class="carousel-heading">Trending</h1>
     <div class="carousel-container">

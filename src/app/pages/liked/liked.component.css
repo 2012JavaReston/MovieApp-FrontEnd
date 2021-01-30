@@ -92,6 +92,7 @@ hr {
 }
 
 #wholeCard {
+  font-family: var(--thirdFont);
   color: var(--primaryWhiteColor);
   background-color: var(--primaryRedColor);
   border: 2px solid black;
