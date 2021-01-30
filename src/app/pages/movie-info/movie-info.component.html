@@ -1,21 +1,38 @@
-<div class="movie-info-container">
+<div class="movie-info-container container-fluid">
 
-    <div class="title-container">
-        <h1>{{movie.title}}</h1>
-        <button [class]="liked ? 'btn btn-dark' : 'btn btn-light'" (click)="liked ? removeLike() : likeMovie()">{{liked ? 'Liked' : 'Like'}}</button>
-        <button [class]="watch ? 'btn btn-dark' : 'btn btn-light'" (click)="watch ? removeWatch() : watchMovie()">{{watch ? 'Added' : 'Watch Later'}}</button>
+  <div class="title-container">
+    <h1 class="display-1" id="titleText">{{movie.title}}</h1>
+  </div>
+
+  <img [src]="movie.image" [alt]="movie.title">
+  <div class="row" id="infoRow">
+    <div class="col-sm-4" id="genreInfo">
+      <div class="genre-container">
+        <h2><b>Genre(s):</b></h2>
+        <h4><span *ngFor="let genre of movie.genre">{{genre.name}}</span></h4>
+        <button [class]="liked ? 'btn btn-dark' : 'btn btn-light'"
+          (click)="liked ? removeLike() : likeMovie()">{{liked ? 'Liked' : 'Like'}}</button>
+        <button [class]="watch ? 'btn btn-dark' : 'btn btn-light'"
+          (click)="watch ? removeWatch() : watchMovie()">{{watch ? 'Added' : 'Watch Later'}}</button>
+      </div>
     </div>
-    
-    <img [src]="movie.image" [alt]="movie.title">
-    <div class="genre-container">
-        <p>Genre(s): <span *ngFor="let genre of movie.genre">{{genre.name}}</span></p>
+    <div class="col-sm-8" id="detailsInfo">
+      <h4><b>Rating</b></h4>
+      <p> {{movie.rating}}</p>
+      <h4><b>Release Date</b></h4>
+      <p>{{movie.releaseDate}}</p>
+      <h4><b>Overview</b></h4>
+      <p> {{movie.description}}</p>
     </div>
-    <p>Rating: {{movie.rating}}</p>
-    <p>Release Date: {{movie.releaseDate}}</p>
-    <p>Overview: {{movie.description}}</p>
+  </div>
+
+  <div class="container">
+      <h2>Comments</h2>
     <textarea [(ngModel)]="commentContent" placeholder="Comments here"></textarea>
     <button class="btn btn-primary" (click)="addComment()">Submit</button>
     <div *ngIf="comments" class="comment-container">
+
         <app-comment-entry (refresh)="refreshComponent()" *ngFor="let entry of comments" [commentId]="entry.id" [userId]="entry.user.id" [userName]="entry.user.username" [commentText]="entry.comment"></app-comment-entry>
     </div>
+  </div>
 </div>
