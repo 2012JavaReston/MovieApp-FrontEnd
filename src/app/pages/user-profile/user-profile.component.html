@@ -12,11 +12,11 @@
               <p class="user-header">Username:</p>
               <p class="user-info">{{user.username}}</p>
             </div>
-            <div class="user-info-container">
+            <div class="user-info-container" *ngIf="currentUserProfile">
               <p class="user-header">First Name:</p>
               <p class="user-info">{{user.firstName}}</p>
             </div>
-            <div class="user-info-container">
+            <div class="user-info-container" *ngIf="currentUserProfile">
               <p class="user-header">Last Name:</p>
               <p class="user-info">{{user.lastName}}</p>
             </div>
