@@ -41,6 +41,16 @@ export class UserProfileComponent implements OnInit, OnChanges{
       this.likedMovies = []; 
       this.apiService.getUserByUsername(this.username).subscribe(data =>{
         this.user = Object.assign(new User(), data);
+        let local = localStorage.getItem("user");
+        if(typeof local === "string"){
+          let user = JSON.parse(local).username; 
+          if(this.username != user){
+            this.currentUserProfile = false; 
+          } else {
+            this.currentUserProfile = true; 
+          }
+        } 
+      
         this.apiService.getLikeListById(this.user.id).subscribe(
             data => {
               console.log(`DATA: ${JSON.stringify(data)}`)
