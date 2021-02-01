@@ -1,46 +1,87 @@
 # Movie App
-
+Check out our [Movie App](http://cinematch.s3-website-us-east-1.amazonaws.com/) online! Use FireFox for the best experience.
 ## Project Description
 
-Here goes your awesome project description!
+
 
 ## Technologies Used
-
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* Angular - 11.0.6
+* Typescript - 4.1.3
+* Material - 11.1.0
+* Bootstrap - 4.6.0
+* HTML5
+* CSS3
+* Font Awesome
+* TMDB API
 
 ## Features
+User can: 
+* login / logout
+* Create an account
+* Comment on a movie and delete their comment
+* Like a movie and view their liked movies
+* Add a movie to watch list and view their list
+* View list of random movies, tending movies, and movies to explore
+* Search a movie by name
 
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
-
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+## To-do
+* Friend List
+* Random Movie Filters (Language, rating, genre)
+* Profile Pictures
+* UI polish
+* Trailer playback
+* Interface with third party streaming APIs
 
 ## Getting Started
    
-(include git clone command)
-(include all environment setup steps)
+1. Have your environment [set-up](https://angular.io/guide/setup-local) for Angular development
+2. Run `git clone https://github.com/2012JavaReston/MovieApp-FrontEnd.git`
+3. Run `npm install`
+4. Run `ng serve --open`
 
-> Be sure to include BOTH Windows and Unix command  
-> Be sure to mention if the commands only work on a specific platform (eg. AWS, GCP)
-
-- All the `code` required to get started
-- Images of what it should look like
+To connect to a local database:
+1. Navigate to [MovieApp-BackEnd](https://github.com/2012JavaReston/MovieApp-BackEnd) and follow their set 'Getting Started' guide
+2. In the MovieApp-FrontEnd, navigate to src/app/services/api.service.ts and change the baseUrl variable to your own local instance of the BackEnd server.
+    * Example: private baseUrl = 'http://localhost:8080/MovieApp/api/'
 
 ## Usage
 
-> Here, you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
+Landing: `http://localhost:4200/`
+
+<img style='max-width: 650px' src='https://imgur.com/yJ649VL.png' />
+
+Login: `http://localhost:4200/login`
+
+<img style='max-width: 650px' src='https://imgur.com/48XJZeP.png' />
+
+Register: `http://localhost:4200/register` 
+
+<img style='max-width: 650px' src='https://imgur.com/TswRz4E.png' />
+
+Home: `http://localhost:4200/home`
+
+<img style='max-width: 650px' src='https://imgur.com/OH3ZZ8I.png' />
+
+Search: `http://localhost:4200/search/:movie`
+
+<img style='max-width: 650px' src='https://imgur.com/rIGtYa8.png' />
+
+Liked: `http://localhost:4200/liked`
+
+<img style='max-width: 650px' src='https://imgur.com/7QyAQrR.png' />
+
+Movie Info: `http://localhost:4200/movieInfo/:id`
+
+<img style='max-width: 650px' src='https://imgur.com/OCjg0wa.png' />
+
+Profile: `http://localhost:4200/profile/:username`
+
+<img style='max-width: 650px' src='https://imgur.com/8ccyfuz.png' />
+
+Watch List: `http://localhost:4200/watch`
+
+<img style='max-width: 650px' src='https://imgur.com/oZ5DORL.png' />
 
 ## Contributors
 
-> Here list the people who have contributed to this project. (ignore this section, if its a solo project)
-
-## License
-
-This project uses the following license: [<license_name>](<link>).
-
+Lester Young, Andrew Gee, Jeff Enriquez, Alec Sherlock, Ryan Murray
